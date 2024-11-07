@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "USER")
 public class User {
 
     @Id
