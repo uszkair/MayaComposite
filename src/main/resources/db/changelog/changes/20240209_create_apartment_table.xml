@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20241107-1" author="RobertUszkai">
+        <!-- Tábla létrehozása a társasházak adatai és beállítások tárolására -->
+        <createTable tableName="apartment">
+            <!-- /** Egyedi azonosító */ -->
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <!-- /** Társasház azonosító (opcionális, belső használatra) */ -->
+            <column name="apartment_identifier" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Társasház neve */ -->
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Irányítószám */ -->
+            <column name="postal_code" type="varchar(4)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Város */ -->
+            <column name="city" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Utca, házszám */ -->
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** 
+             * Bázis cím, albetétek címéhez
+             * - alap cím, amennyiben az albetéteknél házszám / épület meg van adva
+             * - alapértelmezetten: "társasház utca, házszám" mező értéke
+             * - üres értékhez megadandó: "-"
+             */ -->
+            <column name="base_address" type="varchar(500)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** 
+             * Társasház dedikált e-mail címe
+             * Társasházból küldött e-mailek válasz címe, amennyiben eltér a 
+             * közös képviselet általánosan használt e-mail címétől 
+             */ -->
+            <column name="dedicated_email" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Helyrajzi szám */ -->
+            <column name="cadastral_number" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Adószám */ -->
+            <column name="tax_number" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Lakásszövetkezet speciális beállítások */ -->
+            <column name="is_housing_cooperative" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Adatrögzítés indítása */ -->
+            <column name="data_entry_start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Lakói hozzáférés indítása */ -->
+            <column name="resident_access_start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Aktív-e a ház */ -->
+            <column name="is_active" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Albetétek száma */ -->
+            <column name="unit_count" type="int">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Albetétek területe (m2) */ -->
+            <column name="total_area" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Albetétek térfogata (m3) */ -->
+            <column name="total_volume" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Albetétek tulajdoni hányada */ -->
+            <column name="ownership_ratio" type="decimal(10,3)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- /** Létrehozta */ -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Létrehozás dátuma */ -->
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Módosította */ -->
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- /** Módosítás dátuma */ -->
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- /** Primary key index */ -->
+        <createIndex indexName="pk_apartment" tableName="apartment">
+            <column name="id"/>
+        </createIndex>
+
+        <!-- /** Kereső indexek */ -->
+        <createIndex indexName="idx_apartment_search" tableName="apartment">
+            <column name="postal_code"/>
+            <column name="city"/>
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
