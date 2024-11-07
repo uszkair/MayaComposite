@@ -14,13 +14,10 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
 
-    public CustomUserDetailsService(UserRepository userRepository,
-                                    PasswordEncoder passwordEncoder) {
+    public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -35,12 +32,5 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .authorities("USER") // You can customize authorities/roles as needed
                 .build();
     }
-    public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
 
-    public User save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Encrypt password
-        return userRepository.save(user);
-    }
 }

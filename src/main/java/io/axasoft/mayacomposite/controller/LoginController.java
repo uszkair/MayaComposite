@@ -5,6 +5,7 @@ import io.axasoft.mayacomposite.config.security.JwtTokenUtil;
 import io.axasoft.mayacomposite.request.LoginRequest;
 import io.axasoft.mayacomposite.request.RegisterRequest;
 import io.axasoft.mayacomposite.service.CustomUserDetailsService;
+import io.axasoft.mayacomposite.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,11 +21,15 @@ public class LoginController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
-    private final CustomUserDetailsService userService;
+    private final CustomUserDetailsService userDetailsService;
+    private final UserService userService;
 
-    public LoginController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, CustomUserDetailsService userService) {
+    public LoginController(AuthenticationManager authenticationManager,
+                           JwtTokenUtil jwtTokenUtil,
+                           CustomUserDetailsService userDetailsService, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
+        this.userDetailsService = userDetailsService;
         this.userService = userService;
     }
 
