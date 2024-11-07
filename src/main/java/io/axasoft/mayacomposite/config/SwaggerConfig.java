@@ -1,4 +1,4 @@
-package io.axasoft.mayacomposite.config.security;
+package io.axasoft.mayacomposite.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
