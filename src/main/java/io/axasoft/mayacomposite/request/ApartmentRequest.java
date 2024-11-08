@@ -55,7 +55,4 @@ public class ApartmentRequest {
     @Schema(description = "Lakói hozzáférés indítása (hónap)", example = "2024-02")
     @Pattern(regexp = "\\d{4}-\\d{2}", message = "A dátum formátuma nem megfelelő (YYYY-MM)")
     private String residentAccessStartMonth;
-
-    @Schema(description = "Aktív-e a ház", example = "true")
-    private Boolean isActive = true;
 }

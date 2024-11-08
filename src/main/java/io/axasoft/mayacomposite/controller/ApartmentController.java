@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * Társasházak kezelésére szolgáló REST végpontok.
  */
 @RestController
-@RequestMapping("/apartments")
+@RequestMapping("/apartment")
 @RequiredArgsConstructor
 @Tag(name = "Társasházak", description = "Társasházak kezelésére szolgáló végpontok")
 public class ApartmentController {
@@ -26,7 +26,7 @@ public class ApartmentController {
     private final ApartmentService apartmentService;
 
     @Operation(summary = "Összes társasház lekérése")
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<Page<ApartmentListResponse>> getAllApartments(Pageable pageable) {
         return ResponseEntity.ok(apartmentService.getAllApartments(pageable));
     }
@@ -38,7 +38,7 @@ public class ApartmentController {
     }
 
     @Operation(summary = "Új társasház létrehozása")
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<ApartmentResponse> createApartment(@Valid @RequestBody ApartmentRequest request) {
         return ResponseEntity.ok(apartmentService.createApartment(request));
     }
