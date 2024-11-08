@@ -87,21 +87,6 @@
                 <constraints nullable="false"/>
             </column>
 
-            <!-- /** Albetétek száma */ -->
-            <column name="unit_count" type="int">
-                <constraints nullable="true"/>
-            </column>
-
-            <!-- /** Albetétek területe (m2) */ -->
-            <column name="total_area" type="decimal(10,2)">
-                <constraints nullable="true"/>
-            </column>
-
-            <!-- /** Albetétek térfogata (m3) */ -->
-            <column name="total_volume" type="decimal(10,2)">
-                <constraints nullable="true"/>
-            </column>
-
             <!-- /** Albetétek tulajdoni hányada */ -->
             <column name="ownership_ratio" type="decimal(10,3)">
                 <constraints nullable="true"/>
