@@ -2,6 +2,7 @@ package io.axasoft.mayacomposite.mapper;
 
 
 import io.axasoft.mayacomposite.model.Apartment;
+import io.axasoft.mayacomposite.request.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
 import io.axasoft.mayacomposite.response.ApartmentResponse;

@@ -1,6 +1,7 @@
 package io.axasoft.mayacomposite.controller;
 
 
+import io.axasoft.mayacomposite.request.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
 import io.axasoft.mayacomposite.response.ApartmentResponse;
@@ -25,10 +26,11 @@ public class ApartmentController {
 
     private final ApartmentService apartmentService;
 
-    @Operation(summary = "Összes társasház lekérése")
+    @Operation(summary = "Get all apartments with filtering and pagination")
     @GetMapping("/list")
-    public ResponseEntity<Page<ApartmentListResponse>> getAllApartments(Pageable pageable) {
-        return ResponseEntity.ok(apartmentService.getAllApartments(pageable));
+    public ResponseEntity<Page<ApartmentListResponse>> getAllApartments(
+            ApartmentFilterRequest filterRequest, Pageable pageable) {
+        return ResponseEntity.ok(apartmentService.getAllApartments(filterRequest, pageable));
     }
 
     @Operation(summary = "Társasház lekérése azonosító alapján")
