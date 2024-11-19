@@ -1,9 +1,10 @@
 package io.axasoft.mayacomposite.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
-
-import java.util.UUID;
 
 @Entity(name = "USER")
 public class User extends Auditable{

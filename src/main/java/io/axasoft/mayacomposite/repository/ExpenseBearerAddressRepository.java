@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public interface ExpenseBearerAddressRepository extends JpaRepository<ExpenseBearerAddress, String>, JpaSpecificationExecutor<ExpenseBearerAddress> {
@@ -16,5 +15,5 @@ public interface ExpenseBearerAddressRepository extends JpaRepository<ExpenseBea
      * @param expenseBearerId Az ExpenseBearer entitás azonosítója
      * @return Címek listája
      */
-    List<ExpenseBearerAddress> findByExpenseBearerId(UUID expenseBearerId);
+    List<ExpenseBearerAddress> findByExpenseBearerId(String expenseBearerId);
 }

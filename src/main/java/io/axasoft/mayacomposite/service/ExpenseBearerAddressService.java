@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Service class for managing ExpenseBearerAddress entities.
@@ -25,7 +24,7 @@ public class ExpenseBearerAddressService {
      * @param expenseBearerId The UUID of the ExpenseBearer
      * @return A list of ExpenseBearerAddress entities
      */
-    public List<ExpenseBearerAddress> getAddressesByExpenseBearerId(UUID expenseBearerId) {
+    public List<ExpenseBearerAddress> getAddressesByExpenseBearerId(String expenseBearerId) {
         return addressRepository.findByExpenseBearerId(expenseBearerId);
     }
 }
