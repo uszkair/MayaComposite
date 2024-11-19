@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!-- Changeset for creating the expense_bearer table -->
+    <changeSet id="20241119-1" author="RobertUszkai">
+        <createTable tableName="expense_bearer">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="bearer_type" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_name" type="varchar(255)"/>
+            <column name="mother_name" type="varchar(255)"/>
+            <column name="birth_year" type="integer"/>
+            <column name="birth_date" type="date"/>
+            <column name="birth_place" type="varchar(255)"/>
+            <column name="tax_id" type="varchar(50)"/>
+            <column name="personal_id" type="varchar(50)"/>
+            <column name="id_card_number" type="varchar(50)"/>
+            <column name="notification_language" type="varchar(50)"/>
+            <column name="use_iban" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email_notifications" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="print_notifications" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="direct_debit_id" type="varchar(50)"/>
+            <column name="bank_name" type="varchar(255)"/>
+            <column name="bank_account_number" type="varchar(50)"/>
+            <column name="account_holder_name" type="varchar(255)"/>
+            <column name="default_payment_method" type="varchar(50)"/>
+            <column name="direct_debit_limit" type="decimal(10,2)" defaultValue="0.00">
+                <constraints nullable="false"/>
+            </column>
+            <column name="access_email" type="varchar(255)"/>
+            <column name="status" type="varchar(100)"/>
+            <column name="type" type="varchar(100)"/>
+            <column name="identifier" type="varchar(50)"/>
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+            <!-- Audit columns -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for creating the expense_bearer_phone_number table -->
+    <changeSet id="20241119-2" author="RobertUszkai">
+        <createTable tableName="expense_bearer_phone_number">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="expense_bearer_id" type="varchar(36)">
+                <constraints nullable="false" foreignKeyName="fk_phone_expense_bearer"
+                             references="expense_bearer(id)"/>
+            </column>
+            <column name="phone_number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <!-- Audit columns -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for creating the expense_bearer_email_address table -->
+    <changeSet id="20241119-3" author="RobertUszkai">
+        <createTable tableName="expense_bearer_email_address">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="expense_bearer_id" type="varchar(36)">
+                <constraints nullable="false" foreignKeyName="fk_email_expense_bearer"
+                             references="expense_bearer(id)"/>
+            </column>
+            <column name="email_address" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <!-- Audit columns -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Changeset for creating the expense_bearer_address table -->
+    <changeSet id="20241119-4" author="RobertUszkai">
+        <createTable tableName="expense_bearer_address">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="expense_bearer_id" type="varchar(36)">
+                <constraints nullable="false" foreignKeyName="fk_address_expense_bearer"
+                             references="expense_bearer(id)"/>
+            </column>
+            <column name="address_line" type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(100)"/>
+            <column name="postal_code" type="varchar(20)"/>
+            <column name="country" type="varchar(100)"/>
+            <column name="default_address" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <!-- Audit columns -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

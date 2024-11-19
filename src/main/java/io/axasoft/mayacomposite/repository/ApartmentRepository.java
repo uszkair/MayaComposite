@@ -7,22 +7,24 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.UUID;
 
 @Repository
 public interface ApartmentRepository extends JpaRepository<Apartment, String>, JpaSpecificationExecutor<Apartment> {
+
     /**
-     * Aktív társasházak lekérdezése.
+     * Retrieves a paginated list of active apartments.
      *
-     * @param pageable Lapozási paraméterek
-     * @return Aktív társasházak listája
+     * @param pageable Pagination parameters
+     * @return A page of active apartments
      */
     Page<Apartment> findByIsActiveTrue(Pageable pageable);
 
     /**
-     * Ellenőrzi, hogy létezik-e már az adott azonosítóval társasház.
+     * Checks if an apartment with the given identifier already exists.
      *
-     * @param apartmentIdentifier A társasház azonosítója
-     * @return true ha létezik, false ha nem
+     * @param apartmentIdentifier The identifier of the apartment
+     * @return true if it exists, false otherwise
      */
     boolean existsByApartmentIdentifier(String apartmentIdentifier);
 }

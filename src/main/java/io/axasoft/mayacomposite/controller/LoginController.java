@@ -7,6 +7,7 @@ import io.axasoft.mayacomposite.request.RegisterRequest;
 import io.axasoft.mayacomposite.service.CustomUserDetailsService;
 import io.axasoft.mayacomposite.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +17,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -33,7 +34,7 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         try {
             // Authenticate the user using Spring Security's AuthenticationManager
@@ -52,7 +53,7 @@ public class LoginController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
         if (userService.findByEmail(registerRequest.getEmail()).isPresent()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email is already in use.");

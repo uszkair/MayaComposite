@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.UUID;
 
 /**
  * Service class for managing apartments.
@@ -42,33 +43,33 @@ public class ApartmentService {
         return apartmentRepository.findAll(specification, specifications.pageable)
                 .map(apartmentMapper::toListResponse);
     }
+
     /**
      * Retrieves detailed information about an apartment by its ID.
      *
-     * @param id The ID of the apartment
+     * @param id The UUID of the apartment
      * @return The detailed information of the apartment
      */
     public ApartmentResponse getApartmentById(String id) {
         return apartmentRepository.findById(id)
                 .map(apartmentMapper::toResponse)
-                .orElseThrow(() -> new ServiceException(ApplicationConstants.RESOURCE_NOT_FOUND, id));
+                .orElseThrow(() -> new ServiceException(ApplicationConstants.RESOURCE_NOT_FOUND, id.toString()));
     }
 
     /**
      * Creates a new apartment.
      *
-     * @param apartmentFilterRequest The details of the new apartment
+     * @param apartmentRequest The details of the new apartment
      * @return The created apartment details
      */
     @Transactional
-    public ApartmentResponse createApartment(ApartmentRequest apartmentFilterRequest) {
-        if (apartmentFilterRequest.getApartmentIdentifier() != null &&
-                apartmentRepository.existsByApartmentIdentifier(apartmentFilterRequest.getApartmentIdentifier())) {
-            // Throws a ServiceException with the message key for "apartment.identifier.exists"
+    public ApartmentResponse createApartment(ApartmentRequest apartmentRequest) {
+        if (apartmentRequest.getApartmentIdentifier() != null &&
+                apartmentRepository.existsByApartmentIdentifier(apartmentRequest.getApartmentIdentifier())) {
             throw new ServiceException(ApplicationConstants.APARTMENT_IDENTIFIER_EXISTS);
         }
 
-        Apartment apartment = apartmentMapper.toEntity(apartmentFilterRequest);
+        Apartment apartment = apartmentMapper.toEntity(apartmentRequest);
         apartment = apartmentRepository.save(apartment);
         return apartmentMapper.toResponse(apartment);
     }

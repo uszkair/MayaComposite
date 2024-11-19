@@ -38,7 +38,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <!-- /** 
+            <!-- /**
              * Bázis cím, albetétek címéhez
              * - alap cím, amennyiben az albetéteknél házszám / épület meg van adva
              * - alapértelmezetten: "társasház utca, házszám" mező értéke
@@ -48,10 +48,10 @@
                 <constraints nullable="true"/>
             </column>
 
-            <!-- /** 
+            <!-- /**
              * Társasház dedikált e-mail címe
-             * Társasházból küldött e-mailek válasz címe, amennyiben eltér a 
-             * közös képviselet általánosan használt e-mail címétől 
+             * Társasházból küldött e-mailek válasz címe, amennyiben eltér a
+             * közös képviselet általánosan használt e-mail címétől
              */ -->
             <column name="dedicated_email" type="varchar(255)">
                 <constraints nullable="true"/>
