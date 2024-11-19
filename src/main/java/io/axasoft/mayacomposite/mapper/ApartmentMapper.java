@@ -2,13 +2,16 @@ package io.axasoft.mayacomposite.mapper;
 
 
 import io.axasoft.mayacomposite.model.Apartment;
-import io.axasoft.mayacomposite.request.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
 import io.axasoft.mayacomposite.response.ApartmentResponse;
-import org.mapstruct.*;
-import java.time.YearMonth;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+
 import java.time.LocalDate;
+import java.time.YearMonth;
 
 /**
  * MapStruct mapper interfész a társasház entitás és DTO-k közötti konverzióhoz.

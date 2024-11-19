@@ -1,17 +1,26 @@
 package io.axasoft.mayacomposite.service;
 
 import io.axasoft.mayacomposite.exception.ServiceException;
-import io.axasoft.mayacomposite.model.*;
-import io.axasoft.mayacomposite.repository.*;
-import io.axasoft.mayacomposite.request.*;
-import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
 import io.axasoft.mayacomposite.mapper.ExpenseBearerMapper;
+import io.axasoft.mayacomposite.model.ExpenseBearer;
+import io.axasoft.mayacomposite.model.ExpenseBearerAddress;
+import io.axasoft.mayacomposite.model.ExpenseBearerEmailAddress;
+import io.axasoft.mayacomposite.model.ExpenseBearerPhoneNumber;
+import io.axasoft.mayacomposite.repository.ExpenseBearerAddressRepository;
+import io.axasoft.mayacomposite.repository.ExpenseBearerEmailAddressRepository;
+import io.axasoft.mayacomposite.repository.ExpenseBearerPhoneNumberRepository;
+import io.axasoft.mayacomposite.repository.ExpenseBearerRepository;
+import io.axasoft.mayacomposite.request.ExpenseBearerRequest;
+import io.axasoft.mayacomposite.request.filter.ExpenseBearerFilterRequest;
+import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
+import io.axasoft.mayacomposite.specification.ExpenseBearerSpecifications;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.UUID;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,61 +38,55 @@ public class ExpenseBearerService {
     private final ExpenseBearerAddressRepository addressRepository;
     private final ExpenseBearerMapper expenseBearerMapper;
 
-    /**
-     * Creates a new ExpenseBearer with related phone numbers, email addresses, and addresses.
-     *
-     * @param request The details of the new ExpenseBearer
-     * @return The created ExpenseBearer response
-     */
+    @Transactional
     public ExpenseBearerResponse createExpenseBearer(ExpenseBearerRequest request) {
-        // Create and save the ExpenseBearer entity
+        // Map and save the ExpenseBearer entity
         ExpenseBearer expenseBearer = expenseBearerMapper.toEntity(request);
         ExpenseBearer savedExpenseBearer = expenseBearerRepository.save(expenseBearer);
 
-        // Save related phone numbers
-        if (request.getPhoneNumbers() != null) {
-            List<ExpenseBearerPhoneNumber> phoneNumbers = request.getPhoneNumbers().stream()
-                .map(phoneRequest -> {
-                    ExpenseBearerPhoneNumber phoneNumber = new ExpenseBearerPhoneNumber();
-                    phoneNumber.setExpenseBearer(savedExpenseBearer);
-                    phoneNumber.setPhoneNumber(phoneRequest.getPhoneNumber());
-                    return phoneNumber;
-                }).collect(Collectors.toList());
-            phoneNumberRepository.saveAll(phoneNumbers);
-        }
-
-        // Save related email addresses
-        if (request.getEmailAddresses() != null) {
-            List<ExpenseBearerEmailAddress> emailAddresses = request.getEmailAddresses().stream()
-                .map(emailRequest -> {
-                    ExpenseBearerEmailAddress emailAddress = new ExpenseBearerEmailAddress();
-                    emailAddress.setExpenseBearer(savedExpenseBearer);
-                    emailAddress.setEmailAddress(emailRequest.getEmailAddress());
-                    return emailAddress;
-                }).collect(Collectors.toList());
-            emailAddressRepository.saveAll(emailAddresses);
-        }
-
-        // Save related addresses
+        // Save related addresses and set the ExpenseBearer reference
         if (request.getAddresses() != null) {
             List<ExpenseBearerAddress> addresses = request.getAddresses().stream()
-                .map(addressRequest -> {
-                    ExpenseBearerAddress address = new ExpenseBearerAddress();
-                    address.setExpenseBearer(savedExpenseBearer);
-                    address.setAddressLine(addressRequest.getAddressLine());
-                    address.setCity(addressRequest.getCity());
-                    address.setPostalCode(addressRequest.getPostalCode());
-                    address.setCountry(addressRequest.getCountry());
-                    address.setDefaultAddress(addressRequest.getDefaultAddress());
-                    return address;
-                }).collect(Collectors.toList());
+                    .map(addressRequest -> {
+                        ExpenseBearerAddress address = new ExpenseBearerAddress();
+                        address.setExpenseBearer(savedExpenseBearer); // Set the reference
+                        address.setAddressLine(addressRequest.getAddressLine());
+                        address.setCity(addressRequest.getCity());
+                        address.setPostalCode(addressRequest.getPostalCode());
+                        address.setCountry(addressRequest.getCountry());
+                        address.setDefaultAddress(addressRequest.getDefaultAddress());
+                        return address;
+                    }).collect(Collectors.toList());
             addressRepository.saveAll(addresses);
         }
 
-        // Return the response
+        // Save related phone numbers and set the ExpenseBearer reference
+        if (request.getPhoneNumbers() != null) {
+            List<ExpenseBearerPhoneNumber> phoneNumbers = request.getPhoneNumbers().stream()
+                    .map(phoneRequest -> {
+                        ExpenseBearerPhoneNumber phoneNumber = new ExpenseBearerPhoneNumber();
+                        phoneNumber.setExpenseBearer(savedExpenseBearer); // Set the reference
+                        phoneNumber.setPhoneNumber(phoneRequest.getPhoneNumber());
+                        return phoneNumber;
+                    }).collect(Collectors.toList());
+            phoneNumberRepository.saveAll(phoneNumbers);
+        }
+
+        // Save related email addresses and set the ExpenseBearer reference
+        if (request.getEmailAddresses() != null) {
+            List<ExpenseBearerEmailAddress> emailAddresses = request.getEmailAddresses().stream()
+                    .map(emailRequest -> {
+                        ExpenseBearerEmailAddress emailAddress = new ExpenseBearerEmailAddress();
+                        emailAddress.setExpenseBearer(savedExpenseBearer); // Set the reference
+                        emailAddress.setEmailAddress(emailRequest.getEmailAddress());
+                        return emailAddress;
+                    }).collect(Collectors.toList());
+            emailAddressRepository.saveAll(emailAddresses);
+        }
+
+        // Return the mapped response
         return expenseBearerMapper.toResponse(expenseBearer);
     }
-
     /**
      * Retrieves an ExpenseBearer by its ID.
      *
@@ -96,14 +99,14 @@ public class ExpenseBearerService {
                 .orElseThrow(() -> new ServiceException("ExpenseBearer not found", id.toString()));
     }
 
-    /**
-     * Retrieves a paginated list of ExpenseBearers.
-     *
-     * @param pageable Pagination information
-     * @return A page of ExpenseBearer responses
-     */
-    public Page<ExpenseBearerResponse> getAllExpenseBearers(Pageable pageable) {
-        return expenseBearerRepository.findAll(pageable)
+
+
+    public Page<ExpenseBearerResponse> getAllExpenseBearers(ExpenseBearerFilterRequest filterRequest, Pageable pageable) {
+        // Build the specification using ExpenseBearerSpecifications
+        Specification<ExpenseBearer> specification = ExpenseBearerSpecifications.build(filterRequest);
+
+        // Fetch the filtered and paginated result
+        return expenseBearerRepository.findAll(specification, pageable)
                 .map(expenseBearerMapper::toResponse);
     }
 }

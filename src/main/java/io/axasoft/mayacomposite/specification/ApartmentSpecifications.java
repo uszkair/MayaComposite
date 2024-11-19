@@ -1,10 +1,10 @@
 package io.axasoft.mayacomposite.specification;
 
 import io.axasoft.mayacomposite.model.Apartment;
-import io.axasoft.mayacomposite.request.ApartmentFilterRequest;
+import io.axasoft.mayacomposite.request.filter.ApartmentFilterRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
-import org.springframework.data.domain.Pageable;
 
 /**
  * Specification class for building apartment filtering logic.

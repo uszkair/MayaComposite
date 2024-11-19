@@ -1,6 +1,7 @@
 package io.axasoft.mayacomposite.controller;
 
 import io.axasoft.mayacomposite.request.ExpenseBearerRequest;
+import io.axasoft.mayacomposite.request.filter.ExpenseBearerFilterRequest;
 import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
 import io.axasoft.mayacomposite.service.ExpenseBearerService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,10 +25,11 @@ public class ExpenseBearerController {
 
     private final ExpenseBearerService expenseBearerService;
 
-    @Operation(summary = "Költségviselők listázása lapozással")
+    @Operation(summary = "Költségviselők listázása szűréssel és lapozással")
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<ExpenseBearerResponse>> getAllExpenseBearers(Pageable pageable) {
-        return ResponseEntity.ok(expenseBearerService.getAllExpenseBearers(pageable));
+    public ResponseEntity<Page<ExpenseBearerResponse>> getAllExpenseBearers(
+            ExpenseBearerFilterRequest filterRequest, Pageable pageable) {
+        return ResponseEntity.ok(expenseBearerService.getAllExpenseBearers(filterRequest, pageable));
     }
 
     @Operation(summary = "Költségviselő lekérése azonosító alapján")

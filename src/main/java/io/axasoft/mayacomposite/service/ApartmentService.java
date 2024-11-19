@@ -2,21 +2,20 @@ package io.axasoft.mayacomposite.service;
 
 import io.axasoft.mayacomposite.constants.ApplicationConstants;
 import io.axasoft.mayacomposite.exception.ServiceException;
-import io.axasoft.mayacomposite.request.ApartmentRequest;
-import io.axasoft.mayacomposite.specification.ApartmentSpecifications;
 import io.axasoft.mayacomposite.mapper.ApartmentMapper;
 import io.axasoft.mayacomposite.model.Apartment;
 import io.axasoft.mayacomposite.repository.ApartmentRepository;
-import io.axasoft.mayacomposite.request.ApartmentFilterRequest;
+import io.axasoft.mayacomposite.request.ApartmentRequest;
+import io.axasoft.mayacomposite.request.filter.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
 import io.axasoft.mayacomposite.response.ApartmentResponse;
+import io.axasoft.mayacomposite.specification.ApartmentSpecifications;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.UUID;
 
 /**
  * Service class for managing apartments.

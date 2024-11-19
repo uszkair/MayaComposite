@@ -1,7 +1,7 @@
 package io.axasoft.mayacomposite.controller;
 
-import io.axasoft.mayacomposite.request.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
+import io.axasoft.mayacomposite.request.filter.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
 import io.axasoft.mayacomposite.response.ApartmentResponse;
 import io.axasoft.mayacomposite.service.ApartmentService;
