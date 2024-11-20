@@ -1,5 +1,6 @@
 package io.axasoft.mayacomposite.service;
 
+import io.axasoft.mayacomposite.constants.ApplicationConstants;
 import io.axasoft.mayacomposite.exception.ServiceException;
 import io.axasoft.mayacomposite.mapper.ExpenseBearerMapper;
 import io.axasoft.mayacomposite.model.*;
@@ -36,8 +37,8 @@ public class ExpenseBearerService {
     @Transactional
     public ExpenseBearerResponse createExpenseBearerForApartment(String apartmentId, ExpenseBearerRequest request) {
         // Validate and fetch the Apartment entity
-        Apartment apartment = apartmentRepository.findById(apartmentId)
-                .orElseThrow(() -> new ServiceException("Apartment not found", apartmentId));
+        Apartment apartment =apartmentRepository.findById(apartmentId)
+                .orElseThrow(() -> new ServiceException(ApplicationConstants.RESOURCE_NOT_FOUND, apartmentId));
 
         // Map and save the ExpenseBearer entity
         ExpenseBearer expenseBearer = expenseBearerMapper.toEntity(request);
