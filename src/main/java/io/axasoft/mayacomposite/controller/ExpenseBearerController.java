@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,8 @@ public class ExpenseBearerController {
     @Operation(summary = "Költségviselők listázása szűréssel és lapozással")
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<ExpenseBearerResponse>> getAllExpenseBearers(
-            ExpenseBearerFilterRequest filterRequest, Pageable pageable) {
+            ExpenseBearerFilterRequest filterRequest,
+            @PageableDefault(size = 10, sort = "name") Pageable pageable) {
         return ResponseEntity.ok(expenseBearerService.getAllExpenseBearers(filterRequest, pageable));
     }
 
@@ -38,9 +40,14 @@ public class ExpenseBearerController {
         return ResponseEntity.ok(expenseBearerService.getExpenseBearerById(id));
     }
 
-    @Operation(summary = "Új költségviselő létrehozása")
+    @Operation(summary = "Új költségviselő létrehozása adott társasházhoz")
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ExpenseBearerResponse> createExpenseBearer(@Valid @RequestBody ExpenseBearerRequest request) {
-        return ResponseEntity.ok(expenseBearerService.createExpenseBearer(request));
+    public ResponseEntity<ExpenseBearerResponse> createExpenseBearerForApartment(
+            @RequestParam("apartmentId") String apartmentId,
+            @Valid @RequestBody ExpenseBearerRequest request) {
+
+        ExpenseBearerResponse response = expenseBearerService.createExpenseBearerForApartment(apartmentId, request);
+        return ResponseEntity.ok(response);
     }
+
 }

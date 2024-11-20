@@ -2,7 +2,10 @@ package io.axasoft.mayacomposite.specification;
 
 import io.axasoft.mayacomposite.model.ExpenseBearer;
 import io.axasoft.mayacomposite.request.filter.ExpenseBearerFilterRequest;
+import jakarta.persistence.criteria.Order;
 import org.springframework.data.jpa.domain.Specification;
+
+import java.util.Collections;
 
 public class ExpenseBearerSpecifications {
 
@@ -57,6 +60,12 @@ public class ExpenseBearerSpecifications {
                         (root1, query1, criteriaBuilder1) ->
                                 criteriaBuilder1.lessThanOrEqualTo(root1.get("directDebitLimit"), filterRequest.getMaxDirectDebitLimit())
                 );
+            }
+
+            // Add default sort
+            if (query.getOrderList().isEmpty()) {
+                Order defaultOrder = criteriaBuilder.asc(root.get("name")); // Replace "name" with your default sorting field
+                query.orderBy(Collections.singletonList(defaultOrder));
             }
 
             return specification.toPredicate(root, query, criteriaBuilder);

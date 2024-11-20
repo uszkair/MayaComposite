@@ -99,4 +99,8 @@ public class ExpenseBearer extends Auditable {
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "apartment_id", nullable = false)
+    private Apartment apartment;
 }

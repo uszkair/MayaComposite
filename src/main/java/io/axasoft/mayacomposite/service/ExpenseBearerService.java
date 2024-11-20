@@ -2,14 +2,8 @@ package io.axasoft.mayacomposite.service;
 
 import io.axasoft.mayacomposite.exception.ServiceException;
 import io.axasoft.mayacomposite.mapper.ExpenseBearerMapper;
-import io.axasoft.mayacomposite.model.ExpenseBearer;
-import io.axasoft.mayacomposite.model.ExpenseBearerAddress;
-import io.axasoft.mayacomposite.model.ExpenseBearerEmailAddress;
-import io.axasoft.mayacomposite.model.ExpenseBearerPhoneNumber;
-import io.axasoft.mayacomposite.repository.ExpenseBearerAddressRepository;
-import io.axasoft.mayacomposite.repository.ExpenseBearerEmailAddressRepository;
-import io.axasoft.mayacomposite.repository.ExpenseBearerPhoneNumberRepository;
-import io.axasoft.mayacomposite.repository.ExpenseBearerRepository;
+import io.axasoft.mayacomposite.model.*;
+import io.axasoft.mayacomposite.repository.*;
 import io.axasoft.mayacomposite.request.ExpenseBearerRequest;
 import io.axasoft.mayacomposite.request.filter.ExpenseBearerFilterRequest;
 import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
@@ -37,11 +31,17 @@ public class ExpenseBearerService {
     private final ExpenseBearerEmailAddressRepository emailAddressRepository;
     private final ExpenseBearerAddressRepository addressRepository;
     private final ExpenseBearerMapper expenseBearerMapper;
+    private final ApartmentRepository apartmentRepository;
 
     @Transactional
-    public ExpenseBearerResponse createExpenseBearer(ExpenseBearerRequest request) {
+    public ExpenseBearerResponse createExpenseBearerForApartment(String apartmentId, ExpenseBearerRequest request) {
+        // Validate and fetch the Apartment entity
+        Apartment apartment = apartmentRepository.findById(apartmentId)
+                .orElseThrow(() -> new ServiceException("Apartment not found", apartmentId));
+
         // Map and save the ExpenseBearer entity
         ExpenseBearer expenseBearer = expenseBearerMapper.toEntity(request);
+        expenseBearer.setApartment(apartment); // Set the apartment relationship
         ExpenseBearer savedExpenseBearer = expenseBearerRepository.save(expenseBearer);
 
         // Save related addresses and set the ExpenseBearer reference
@@ -87,6 +87,7 @@ public class ExpenseBearerService {
         // Return the mapped response
         return expenseBearerMapper.toResponse(expenseBearer);
     }
+
     /**
      * Retrieves an ExpenseBearer by its ID.
      *
