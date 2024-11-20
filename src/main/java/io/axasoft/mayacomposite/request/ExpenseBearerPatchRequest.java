@@ -1,4 +1,4 @@
-package io.axasoft.mayacomposite.response;
+package io.axasoft.mayacomposite.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.DecimalMin;
@@ -10,12 +10,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-/**
- * Response model for ExpenseBearer details.
- */
 @Data
-public class ExpenseBearerResponse {
-
+public class ExpenseBearerPatchRequest {
     @Schema(description = "Költségviselő típusa", example = "Individual")
     @NotBlank(message = "{expenseBearer.error.bearerType.notblank}")
     private String bearerType;
@@ -100,4 +96,5 @@ public class ExpenseBearerResponse {
 
     @Schema(description = "Vége dátum", example = "2023-12-31")
     private LocalDate endDate;
+
 }

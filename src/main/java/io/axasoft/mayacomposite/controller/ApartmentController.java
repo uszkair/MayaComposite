@@ -1,5 +1,6 @@
 package io.axasoft.mayacomposite.controller;
 
+import io.axasoft.mayacomposite.request.ApartmentPatchRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
 import io.axasoft.mayacomposite.request.filter.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
@@ -45,4 +46,19 @@ public class ApartmentController {
     public ResponseEntity<ApartmentResponse> createApartment(@Valid @RequestBody ApartmentRequest request) {
         return ResponseEntity.ok(apartmentService.createApartment(request));
     }
+
+    @Operation(
+            summary = "Társasház adatainak részleges frissítése",
+            description = "Ez az endpoint lehetővé teszi egy társasház adatainak részleges frissítését. " +
+                    "Csak a kérésben megadott nem null értékű mezők kerülnek frissítésre, a többi változatlan marad.",
+            tags = {"Társasház"}
+    )
+    @PatchMapping("/{id}")
+    public ResponseEntity<ApartmentResponse> updateApartment(
+            @PathVariable("id") String id,
+            @RequestBody @Valid ApartmentPatchRequest request) {
+        ApartmentResponse response = apartmentService.updateApartment(id, request);
+        return ResponseEntity.ok(response);
+    }
+
 }

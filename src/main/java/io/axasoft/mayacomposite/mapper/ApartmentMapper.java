@@ -2,13 +2,11 @@ package io.axasoft.mayacomposite.mapper;
 
 
 import io.axasoft.mayacomposite.model.Apartment;
+import io.axasoft.mayacomposite.request.ApartmentPatchRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
 import io.axasoft.mayacomposite.response.ApartmentResponse;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.*;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -60,6 +58,16 @@ public interface ApartmentMapper {
         }
         return YearMonth.parse(yearMonth).atDay(1);
     }
+
+    /**
+     * Updates an existing Apartment entity with non-null fields from an ApartmentPatchRequest.
+     * This method is used for partial updates (PATCH) and ensures that only the fields
+     * present in the request are updated, while others remain unchanged.
+     *
+     * @param dto The ApartmentPatchRequest containing the fields to update.
+     * @param entity The existing Apartment entity to be updated.
+     */
+    void updateApartmentFromDto(ApartmentPatchRequest dto, @MappingTarget Apartment entity);
 
     /**
      * LocalDate formázása YearMonth stringgé

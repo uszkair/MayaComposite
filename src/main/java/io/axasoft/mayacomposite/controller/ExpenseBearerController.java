@@ -1,5 +1,6 @@
 package io.axasoft.mayacomposite.controller;
 
+import io.axasoft.mayacomposite.request.ExpenseBearerPatchRequest;
 import io.axasoft.mayacomposite.request.ExpenseBearerRequest;
 import io.axasoft.mayacomposite.request.filter.ExpenseBearerFilterRequest;
 import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
@@ -47,6 +48,14 @@ public class ExpenseBearerController {
             @Valid @RequestBody ExpenseBearerRequest request) {
 
         ExpenseBearerResponse response = expenseBearerService.createExpenseBearerForApartment(apartmentId, request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/expense-bearers/{id}")
+    public ResponseEntity<ExpenseBearerResponse> updateExpenseBearer(
+            @PathVariable("id") String id,
+            @RequestBody @Valid ExpenseBearerPatchRequest request) {
+        ExpenseBearerResponse response = expenseBearerService.updateExpenseBearer(id, request);
         return ResponseEntity.ok(response);
     }
 

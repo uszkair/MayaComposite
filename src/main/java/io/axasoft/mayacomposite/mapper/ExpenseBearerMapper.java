@@ -1,9 +1,13 @@
 package io.axasoft.mayacomposite.mapper;
 
 import io.axasoft.mayacomposite.model.ExpenseBearer;
+import io.axasoft.mayacomposite.request.ExpenseBearerPatchRequest;
 import io.axasoft.mayacomposite.request.ExpenseBearerRequest;
 import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 /**
  * MapStruct mapper interface for converting ExpenseBearer entity and DTOs.
@@ -30,4 +34,13 @@ public interface ExpenseBearerMapper {
      * Converts an entity to a response object.
      */
     ExpenseBearerResponse toResponse(ExpenseBearer expenseBearer);
+
+    /**
+     * Updates an existing ExpenseBearer entity with non-null fields from an ExpenseBearerPatchRequest.
+     *
+     * @param dto The ExpenseBearerPatchRequest containing the fields to update.
+     * @param entity The ExpenseBearer entity to be updated.
+     */
+    void updateExpenseBearerFromDto(ExpenseBearerPatchRequest dto, @MappingTarget ExpenseBearer entity);
+
 }

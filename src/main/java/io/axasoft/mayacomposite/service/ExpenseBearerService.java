@@ -5,6 +5,7 @@ import io.axasoft.mayacomposite.exception.ServiceException;
 import io.axasoft.mayacomposite.mapper.ExpenseBearerMapper;
 import io.axasoft.mayacomposite.model.*;
 import io.axasoft.mayacomposite.repository.*;
+import io.axasoft.mayacomposite.request.ExpenseBearerPatchRequest;
 import io.axasoft.mayacomposite.request.ExpenseBearerRequest;
 import io.axasoft.mayacomposite.request.filter.ExpenseBearerFilterRequest;
 import io.axasoft.mayacomposite.response.ExpenseBearerResponse;
@@ -111,4 +112,31 @@ public class ExpenseBearerService {
         return expenseBearerRepository.findAll(specification, pageable)
                 .map(expenseBearerMapper::toResponse);
     }
+
+    /**
+     * Updates an existing ExpenseBearer entity with the provided partial data.
+     *
+     * @param id The unique identifier of the ExpenseBearer to update.
+     * @param request The ExpenseBearerPatchRequest containing the fields to update.
+     *                Only non-null fields in the request will be updated.
+     * @return ExpenseBearerResponse containing the updated ExpenseBearer data.
+     * @throws ServiceException if the ExpenseBearer with the given ID is not found.
+     */
+    @Transactional
+    public ExpenseBearerResponse updateExpenseBearer(String id, ExpenseBearerPatchRequest request) {
+        // Fetch the ExpenseBearer entity or throw an exception if not found
+        ExpenseBearer expenseBearer = expenseBearerRepository.findById(id)
+                .orElseThrow(() -> new ServiceException(ApplicationConstants.RESOURCE_NOT_FOUND, id));
+
+        // Update ExpenseBearer entity using MapStruct mapper
+        expenseBearerMapper.updateExpenseBearerFromDto(request, expenseBearer);
+
+        // Save updated entity to the database
+        expenseBearer = expenseBearerRepository.save(expenseBearer);
+
+        // Convert the updated entity to a response DTO and return
+        return expenseBearerMapper.toResponse(expenseBearer);
+    }
+
+
 }

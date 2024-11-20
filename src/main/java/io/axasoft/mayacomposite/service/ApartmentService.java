@@ -5,6 +5,7 @@ import io.axasoft.mayacomposite.exception.ServiceException;
 import io.axasoft.mayacomposite.mapper.ApartmentMapper;
 import io.axasoft.mayacomposite.model.Apartment;
 import io.axasoft.mayacomposite.repository.ApartmentRepository;
+import io.axasoft.mayacomposite.request.ApartmentPatchRequest;
 import io.axasoft.mayacomposite.request.ApartmentRequest;
 import io.axasoft.mayacomposite.request.filter.ApartmentFilterRequest;
 import io.axasoft.mayacomposite.response.ApartmentListResponse;
@@ -72,4 +73,30 @@ public class ApartmentService {
         apartment = apartmentRepository.save(apartment);
         return apartmentMapper.toResponse(apartment);
     }
+
+    /**
+     * Updates an existing Apartment entity with the provided partial data.
+     *
+     * @param id The unique identifier of the Apartment to update.
+     * @param request The ApartmentPatchRequest containing the fields to update.
+     *                Only non-null fields in the request will be updated.
+     * @return ApartmentResponse containing the updated Apartment data.
+     * @throws ServiceException if the Apartment with the given ID is not found.
+     */
+    @Transactional
+    public ApartmentResponse updateApartment(String id, ApartmentPatchRequest request) {
+        // Fetch the Apartment entity or throw an exception if not found
+        Apartment apartment = apartmentRepository.findById(id)
+                .orElseThrow(() -> new ServiceException(ApplicationConstants.RESOURCE_NOT_FOUND, id));
+
+        // Update Apartment entity using MapStruct mapper
+        apartmentMapper.updateApartmentFromDto(request, apartment);
+
+        // Save updated entity to the database
+        apartment = apartmentRepository.save(apartment);
+
+        // Convert the updated entity to a response DTO and return
+        return apartmentMapper.toResponse(apartment);
+    }
+
 }
