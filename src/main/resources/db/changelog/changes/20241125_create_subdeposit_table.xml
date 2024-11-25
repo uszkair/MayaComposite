@@ -1,0 +1,209 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20241125-1" author="RobertUszkai">
+        <!-- Albetét tábla létrehozása -->
+        <createTable tableName="subdeposit">
+            <!-- Egyedi azonosító az albetét számára -->
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <!-- Befizetőazonosító az albetéthez -->
+            <column name="payment_identifier" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Albetét típusa -->
+            <column name="type" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Épület adatai -->
+            <column name="building" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Lépcsőház adatai -->
+            <column name="staircase" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Szint adatai -->
+            <column name="floor" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Albetét azonosító -->
+            <column name="identifier" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Helyrajzi szám -->
+            <column name="cadastral_number" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- GDPR hozzájárulás -->
+            <column name="gdpr_consent" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Albetét területe négyzetméterben -->
+            <column name="subdeposit_area" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Erkély területe négyzetméterben -->
+            <column name="balcony_area" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Kert területe négyzetméterben -->
+            <column name="garden_area" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Fűtött terület négyzetméterben -->
+            <column name="heated_area" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Tulajdoni hányad -->
+            <column name="ownership_ratio" type="decimal(10,3)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Albetét térfogata köbméterben -->
+            <column name="volume" type="decimal(10,2)">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Lakók száma az albetétben -->
+            <column name="residents_count" type="integer">
+                <constraints nullable="true"/>
+            </column>
+
+            <!-- Önkormányzati előírás -->
+            <column name="municipal_regulation" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Vízóra felszerelve -->
+            <column name="water_meter_installed" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Albetét hitelt fizet -->
+            <column name="deposit_pays_loan" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Jelzáloggal terhelhető -->
+            <column name="mortgageable" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Postai csekket igényel -->
+            <column name="postal_check_required" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Közös költség (általános) szorzó -->
+            <column name="general_common_cost_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Célbefizetések szorzója -->
+            <column name="targeted_payment_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Szemétszállítási díj szorzója -->
+            <column name="waste_management_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Közös költség (csoportos) szorzó -->
+            <column name="group_common_cost_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Felújítási díj szorzója -->
+            <column name="renovation_fee_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Villamosenergia díj szorzója -->
+            <column name="electricity_fee_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Kezelési díj szorzója -->
+            <column name="handling_fee_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Takarítási díj szorzója -->
+            <column name="cleaning_fee_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Hitel törlesztési díj szorzója -->
+            <column name="loan_repayment_ratio" type="decimal(10,2)" defaultValue="1.00">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Új oszlop: Albetét aktív státusza -->
+            <column name="is_active" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Kapcsolódó társasház azonosító -->
+            <column name="apartment_id" type="varchar(36)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Audit mezők -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Idegen kulcs a társasház (apartment) táblához -->
+        <addForeignKeyConstraint
+                baseTableName="subdeposit"
+                baseColumnNames="apartment_id"
+                constraintName="fk_subdeposit_apartment"
+                referencedTableName="apartment"
+                referencedColumnNames="id"/>
+
+        <!-- Indexek -->
+        <createIndex indexName="idx_subdeposit_identifier_apartment" tableName="subdeposit">
+            <column name="identifier"/>
+            <column name="apartment_id"/>
+        </createIndex>
+
+        <!-- Composite unique constraint on identifier and apartment_id -->
+        <addUniqueConstraint
+                tableName="subdeposit"
+                columnNames="identifier, apartment_id"
+                constraintName="uk_identifier_apartment_id"/>
+
+    </changeSet>
+</databaseChangeLog>
