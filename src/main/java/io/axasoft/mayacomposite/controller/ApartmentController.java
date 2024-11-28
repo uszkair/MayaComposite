@@ -50,8 +50,7 @@ public class ApartmentController {
     @Operation(
             summary = "Társasház adatainak részleges frissítése",
             description = "Ez az endpoint lehetővé teszi egy társasház adatainak részleges frissítését. " +
-                    "Csak a kérésben megadott nem null értékű mezők kerülnek frissítésre, a többi változatlan marad.",
-            tags = {"Társasház"}
+                    "Csak a kérésben megadott nem null értékű mezők kerülnek frissítésre, a többi változatlan marad."
     )
     @PatchMapping("/{id}")
     public ResponseEntity<ApartmentResponse> updateApartment(
