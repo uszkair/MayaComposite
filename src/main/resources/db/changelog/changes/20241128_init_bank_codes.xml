@@ -1,0 +1,1631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20241129-init-banks" author="RobertUszkai">
+        <!-- Create the bank type in the code_table_type -->
+        <insert tableName="code_table_type">
+            <column name="id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="BANK"/>
+            <column name="default_language" value="hu"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: 3A Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="0aa41fe9-8c40-4a90-b447-1174393aec61"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="3A_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="1"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="12fae3f9-a5e5-419c-84eb-44385df8b11f"/>
+            <column name="code_table_id" value="0aa41fe9-8c40-4a90-b447-1174393aec61"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="3A Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Agria Bélapátfalvai Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="d8379042-75a7-4064-94e4-af555acaa1ad"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="AGRIA_BÉLAPÁTFALVAI_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="2"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="ff8a76fb-0731-45b6-8774-b90eef69fd0a"/>
+            <column name="code_table_id" value="d8379042-75a7-4064-94e4-af555acaa1ad"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Agria Bélapátfalvai Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Allianz Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="87441d53-0303-49d9-a979-98a1e41ad016"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="ALLIANZ_BANK"/>
+            <column name="sort_order" valueNumeric="3"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="06c3708c-9d24-4f82-b19f-cd0b5d8a2b31"/>
+            <column name="code_table_id" value="87441d53-0303-49d9-a979-98a1e41ad016"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Allianz Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: AXA Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="28bd2d18-c7d3-4088-a3f7-74c6b1e06513"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="AXA_BANK"/>
+            <column name="sort_order" valueNumeric="4"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="7dcc70b5-7c67-4e76-910f-e1df466ca599"/>
+            <column name="code_table_id" value="28bd2d18-c7d3-4088-a3f7-74c6b1e06513"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="AXA Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: B3 Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="945f5640-2316-46d6-957b-493595e704f3"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="B3_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="5"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="8842e157-2019-4fc4-a2cf-7d8b97f5566a"/>
+            <column name="code_table_id" value="945f5640-2316-46d6-957b-493595e704f3"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="B3 Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Bak és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="7475cb33-d8c1-4a08-8811-7b0920e87f2d"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="BAK_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="6"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="fed442c8-6d7a-4c25-834d-0919242a8ce2"/>
+            <column name="code_table_id" value="7475cb33-d8c1-4a08-8811-7b0920e87f2d"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Bak és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Banco Popolare -->
+        <insert tableName="code_table">
+            <column name="id" value="537f5960-e17f-46b9-86e8-91d588356c86"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="BANCO_POPOLARE"/>
+            <column name="sort_order" valueNumeric="7"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="966b0a64-1954-49b5-b952-4983118cb267"/>
+            <column name="code_table_id" value="537f5960-e17f-46b9-86e8-91d588356c86"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Banco Popolare"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: BNP Paribas Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="fb0c0174-c8fb-4cbb-bf1f-4764b63c205c"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="BNP_PARIBAS_BANK"/>
+            <column name="sort_order" valueNumeric="8"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="917b1d68-9252-4c6d-b004-aeff41b0df36"/>
+            <column name="code_table_id" value="fb0c0174-c8fb-4cbb-bf1f-4764b63c205c"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="BNP Paribas Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Cetelem (BNP Paribas) -->
+        <insert tableName="code_table">
+            <column name="id" value="994d8915-1222-43d0-aa3c-dba0627316a2"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="CETELEM_BNP_PARIBAS"/>
+            <column name="sort_order" valueNumeric="9"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="0834f37b-b46f-4463-98cd-80c459cf09f0"/>
+            <column name="code_table_id" value="994d8915-1222-43d0-aa3c-dba0627316a2"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Cetelem (BNP Paribas)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: CIB Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="57001cec-03b1-45df-bd72-9761e59986e8"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="CIB_BANK"/>
+            <column name="sort_order" valueNumeric="10"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="1b7cf5ba-64f7-4201-b301-323fe8d03089"/>
+            <column name="code_table_id" value="57001cec-03b1-45df-bd72-9761e59986e8"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="CIB Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Citibank -->
+        <insert tableName="code_table">
+            <column name="id" value="9c174760-fe35-4878-9c90-d6f746f65d4c"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="CITIBANK"/>
+            <column name="sort_order" valueNumeric="11"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="0765ffb7-652a-41f3-97a4-b1203f3ea598"/>
+            <column name="code_table_id" value="9c174760-fe35-4878-9c90-d6f746f65d4c"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Citibank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Commerzbank -->
+        <insert tableName="code_table">
+            <column name="id" value="51da33ee-dd32-4bfb-8f03-e29c3157790c"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="COMMERZBANK"/>
+            <column name="sort_order" valueNumeric="12"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="402a1d7c-96cd-4a4c-ba50-19a11494475a"/>
+            <column name="code_table_id" value="51da33ee-dd32-4bfb-8f03-e29c3157790c"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Commerzbank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Credigen Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="da9b7bf1-f3c7-46f3-ba45-63746c26427a"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="CREDIGEN_BANK"/>
+            <column name="sort_order" valueNumeric="13"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="700146a6-735f-416f-b1c9-77b674935c9b"/>
+            <column name="code_table_id" value="da9b7bf1-f3c7-46f3-ba45-63746c26427a"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Credigen Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Dél Takarék Szövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="22d6cc4c-b9c8-43ea-8f95-08fdea2988d4"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="DÉL_TAKARÉK_SZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="14"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="b48c18d9-a3cb-4c1e-aa74-2b4e3a41c93c"/>
+            <column name="code_table_id" value="22d6cc4c-b9c8-43ea-8f95-08fdea2988d4"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Dél Takarék Szövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Deutsche Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="fa101abe-ddf6-48ed-b433-5692c8e25dec"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="DEUTSCHE_BANK"/>
+            <column name="sort_order" valueNumeric="15"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="9035dfea-587c-4d41-b0c8-2f4c8f666c91"/>
+            <column name="code_table_id" value="fa101abe-ddf6-48ed-b433-5692c8e25dec"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Deutsche Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Dresdner Bank (Commerzbank) -->
+        <insert tableName="code_table">
+            <column name="id" value="7e86bf95-32a0-433b-bea3-07438b427713"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="DRESDNER_BANK_COMMERZBANK"/>
+            <column name="sort_order" valueNumeric="16"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="c22448e2-24c7-4c44-9aa4-ebaaf87edfa3"/>
+            <column name="code_table_id" value="7e86bf95-32a0-433b-bea3-07438b427713"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Dresdner Bank (Commerzbank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Duna Takarék Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="771f1f71-7c41-41e9-bbfa-2cc3f0e33254"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="DUNA_TAKARÉK_BANK"/>
+            <column name="sort_order" valueNumeric="17"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="ee567960-2f4f-4f6d-aceb-2f78769d71f2"/>
+            <column name="code_table_id" value="771f1f71-7c41-41e9-bbfa-2cc3f0e33254"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Duna Takarék Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Eger és Környéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="1d804c7c-c730-4af6-8ffa-35d6a1f0ba66"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="EGER_ÉS_KÖRNYÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="18"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="8e75401e-cd5d-4336-9b63-7ee3b14feee2"/>
+            <column name="code_table_id" value="1d804c7c-c730-4af6-8ffa-35d6a1f0ba66"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Eger és Környéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Erste Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="90ea66da-a737-4bbb-a025-c15b6a0b53cc"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="ERSTE_BANK"/>
+            <column name="sort_order" valueNumeric="19"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3ad8754d-5d16-4161-9454-2bfb38b32d6b"/>
+            <column name="code_table_id" value="90ea66da-a737-4bbb-a025-c15b6a0b53cc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Erste Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Erste Lakástakarék -->
+        <insert tableName="code_table">
+            <column name="id" value="6e76eb08-c898-42a6-ad8c-c16c63a4ba52"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="ERSTE_LAKÁSTAKARÉK"/>
+            <column name="sort_order" valueNumeric="20"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3bf1342a-3145-4001-a911-833062d3c820"/>
+            <column name="code_table_id" value="6e76eb08-c898-42a6-ad8c-c16c63a4ba52"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Erste Lakástakarék"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: FHB -->
+        <insert tableName="code_table">
+            <column name="id" value="17ad6d5a-0e1d-46a1-a297-a5efd18fc215"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="FHB"/>
+            <column name="sort_order" valueNumeric="21"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="df89ee93-4e7e-434d-a482-d40488071422"/>
+            <column name="code_table_id" value="17ad6d5a-0e1d-46a1-a297-a5efd18fc215"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="FHB"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Fókusz Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="00428f0b-0341-413b-b454-e656e0ee9133"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="FÓKUSZ_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="22"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="785e9a8c-9a86-4b3e-a542-db74acebf36e"/>
+            <column name="code_table_id" value="00428f0b-0341-413b-b454-e656e0ee9133"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Fókusz Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Fundamenta Lakáskassza -->
+        <insert tableName="code_table">
+            <column name="id" value="a0cc98e3-7696-413d-915f-096ade8678d2"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="FUNDAMENTA_LAKÁSKASSZA"/>
+            <column name="sort_order" valueNumeric="23"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="2e886c87-000f-4f26-bf43-38a4dd228a10"/>
+            <column name="code_table_id" value="a0cc98e3-7696-413d-915f-096ade8678d2"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Fundamenta Lakáskassza"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Füzesabony és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="3da1d688-dc32-4ed8-a86d-329377d7e070"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="FÜZESABONY_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="24"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="81f37e25-aa32-49fd-90d5-d663891d5ef5"/>
+            <column name="code_table_id" value="3da1d688-dc32-4ed8-a86d-329377d7e070"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Füzesabony és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Gránit Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="56d0b67b-ca90-4649-89f7-eda34901aeab"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="GRÁNIT_BANK"/>
+            <column name="sort_order" valueNumeric="25"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="421a54a1-2b39-42be-913a-6a729e9c2e51"/>
+            <column name="code_table_id" value="56d0b67b-ca90-4649-89f7-eda34901aeab"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Gránit Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Hanwha Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="4115a27c-c01b-4315-957e-650ea7b90df9"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="HANWHA_BANK"/>
+            <column name="sort_order" valueNumeric="26"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="573e1ac4-3207-44af-9003-a7a96fdb191e"/>
+            <column name="code_table_id" value="4115a27c-c01b-4315-957e-650ea7b90df9"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Hanwha Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Hajdú Takarék -->
+        <insert tableName="code_table">
+            <column name="id" value="f980b407-eda6-4185-b726-81db39ab8d6a"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="HAJDÚ_TAKARÉK"/>
+            <column name="sort_order" valueNumeric="27"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="b9948cf6-8260-4432-b347-5ecdb0a0398f"/>
+            <column name="code_table_id" value="f980b407-eda6-4185-b726-81db39ab8d6a"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Hajdú Takarék"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Hévíz és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="a8c0f70f-c709-4804-820a-350ec4bbc493"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="HÉVÍZ_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="28"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="96227180-8232-45f2-b032-b621b222eb76"/>
+            <column name="code_table_id" value="a8c0f70f-c709-4804-820a-350ec4bbc493"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Hévíz és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Hungária Takarék -->
+        <insert tableName="code_table">
+            <column name="id" value="90262b0b-89f7-423d-aff8-aee3b1c905eb"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="HUNGÁRIA_TAKARÉK"/>
+            <column name="sort_order" valueNumeric="29"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="5fc2a857-5a70-41b0-9c9d-dc784ef5edac"/>
+            <column name="code_table_id" value="90262b0b-89f7-423d-aff8-aee3b1c905eb"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Hungária Takarék"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: ING -->
+        <insert tableName="code_table">
+            <column name="id" value="e21fc95d-beb0-400d-bb2a-ac13403688fc"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="ING"/>
+            <column name="sort_order" valueNumeric="30"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="bf05344f-3806-4954-97fc-5a209c27921b"/>
+            <column name="code_table_id" value="e21fc95d-beb0-400d-bb2a-ac13403688fc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="ING"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Ják és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="65edf3c1-3b02-4aaf-8f2b-d6fb67242ff3"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="JÁK_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="31"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="4af71833-c1e7-49e3-ad3c-dbc302f3abed"/>
+            <column name="code_table_id" value="65edf3c1-3b02-4aaf-8f2b-d6fb67242ff3"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Ják és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: KDB Bank (Daewoo Bank) -->
+        <insert tableName="code_table">
+            <column name="id" value="3e1ca640-edac-434e-861f-a1ba65954ea9"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="KDB_BANK_DAEWOO_BANK"/>
+            <column name="sort_order" valueNumeric="32"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="c44230aa-c133-4656-9acf-669f580b59c2"/>
+            <column name="code_table_id" value="3e1ca640-edac-434e-861f-a1ba65954ea9"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="KDB Bank (Daewoo Bank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Kinizsi Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="8796a29a-6ba6-4a20-b528-b9b65b9651eb"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="KINIZSI_BANK"/>
+            <column name="sort_order" valueNumeric="33"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="94983f5a-d302-448e-8ed5-7db79e51f1db"/>
+            <column name="code_table_id" value="8796a29a-6ba6-4a20-b528-b9b65b9651eb"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Kinizsi Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: K&H Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="a818ff7e-3369-4828-89cd-286400d895bd"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="K&amp;H_BANK"/>
+            <column name="sort_order" valueNumeric="34"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="48f1ffa9-2a77-47e4-84ac-6ec3bfba626c"/>
+            <column name="code_table_id" value="a818ff7e-3369-4828-89cd-286400d895bd"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="K&amp;H Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Kis-Rába menti Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="c6f7f29b-402d-49e9-a3b7-91203fa144fc"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="KIS_RÁBA_MENTI_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="35"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="1aff0b61-25d0-4a75-bcaf-bdaac0b1ca0f"/>
+            <column name="code_table_id" value="c6f7f29b-402d-49e9-a3b7-91203fa144fc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Kis-Rába menti Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Klikkbank (Erste) -->
+        <insert tableName="code_table">
+            <column name="id" value="98d24547-a043-4053-a473-3e9939ab388a"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="KLIKKBANK_ERSTE"/>
+            <column name="sort_order" valueNumeric="36"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="769ea20a-98a3-4f5b-9db4-e63338a25a8e"/>
+            <column name="code_table_id" value="98d24547-a043-4053-a473-3e9939ab388a"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Klikkbank (Erste)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Lakiteleki Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="13964c20-6a2c-4092-aed2-41e5f445594c"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="LAKITELEKI_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="37"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="ec18d093-b124-4e17-b482-3c3da5dc8449"/>
+            <column name="code_table_id" value="13964c20-6a2c-4092-aed2-41e5f445594c"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Lakiteleki Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Lővő és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="b2d87126-2511-4228-8144-b12727ee3bc8"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="LŐVŐ_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="38"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="05b208a0-b378-48fa-819c-267830ac0a23"/>
+            <column name="code_table_id" value="b2d87126-2511-4228-8144-b12727ee3bc8"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Lővő és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: M7 Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="2a18cda6-4337-4afa-b7ad-9c7924edc892"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="M7_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="39"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="9c0176fd-9c51-4020-a34a-a4447900c7b3"/>
+            <column name="code_table_id" value="2a18cda6-4337-4afa-b7ad-9c7924edc892"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="M7 Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: MagNet Magyar Közösségi Bank (HBW Express Bank) -->
+        <insert tableName="code_table">
+            <column name="id" value="a6d32548-3305-43ca-b005-a2d1bc741a8f"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MAGNET_MAGYAR_KÖZÖSSÉGI_BANK_HBW_EXPRESS_BANK"/>
+            <column name="sort_order" valueNumeric="40"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="34d2a368-dbdd-45d9-bab1-82972bacea70"/>
+            <column name="code_table_id" value="a6d32548-3305-43ca-b005-a2d1bc741a8f"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="MagNet Magyar Közösségi Bank (HBW Express Bank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Magyar Államkincstár -->
+        <insert tableName="code_table">
+            <column name="id" value="9347056d-71a5-46a9-ab82-b61bfd8533dd"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MAGYAR_ÁLLAMKINCSTÁR"/>
+            <column name="sort_order" valueNumeric="41"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3af5e33e-37d4-4855-bf9a-e0e738a1ccd1"/>
+            <column name="code_table_id" value="9347056d-71a5-46a9-ab82-b61bfd8533dd"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Magyar Államkincstár"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Magyar Fejlesztési Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="82b433bd-0983-4018-8404-329df90aa16e"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MAGYAR_FEJLESZTÉSI_BANK"/>
+            <column name="sort_order" valueNumeric="42"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="1b0564ed-732a-4802-a82f-997924973d43"/>
+            <column name="code_table_id" value="82b433bd-0983-4018-8404-329df90aa16e"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Magyar Fejlesztési Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Magyar Külkereskedelmi Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="12c77f22-2fde-4bfb-99fa-9ca2e1c95266"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MAGYAR_KÜLKERESKEDELMI_BANK"/>
+            <column name="sort_order" valueNumeric="43"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="ffddb8ae-862b-4f33-a428-43893c96f8ad"/>
+            <column name="code_table_id" value="12c77f22-2fde-4bfb-99fa-9ca2e1c95266"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Magyar Külkereskedelmi Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: MBH Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="dee2561d-7253-49e7-9265-6f81ba656f4c"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MBH_BANK"/>
+            <column name="sort_order" valueNumeric="44"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="e6f9581a-43bb-409d-84b0-9ded19d4d96c"/>
+            <column name="code_table_id" value="dee2561d-7253-49e7-9265-6f81ba656f4c"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="MBH Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: MBH Bank (Budapest Bank) -->
+        <insert tableName="code_table">
+            <column name="id" value="2265f111-3d7e-43d3-bb57-b7d1f33b7154"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MBH_BANK_BUDAPEST_BANK"/>
+            <column name="sort_order" valueNumeric="45"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="b2b6e396-e1a1-43d3-b1c7-443059932eed"/>
+            <column name="code_table_id" value="2265f111-3d7e-43d3-bb57-b7d1f33b7154"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="MBH Bank (Budapest Bank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: MBH Bank (MKB Bank) -->
+        <insert tableName="code_table">
+            <column name="id" value="c9873f3c-58ff-4d3b-b0f0-67168bbc0577"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MBH_BANK_MKB_BANK"/>
+            <column name="sort_order" valueNumeric="46"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="30d1f978-e5ff-430a-a71c-6ae223a1b946"/>
+            <column name="code_table_id" value="c9873f3c-58ff-4d3b-b0f0-67168bbc0577"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="MBH Bank (MKB Bank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: MBH Bank (Takarékbank) -->
+        <insert tableName="code_table">
+            <column name="id" value="e88df875-670f-4897-9f15-e3e915b2babe"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="MBH_BANK_TAKARÉKBANK"/>
+            <column name="sort_order" valueNumeric="47"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="f188385d-85d9-437c-937d-b829dd562538"/>
+            <column name="code_table_id" value="e88df875-670f-4897-9f15-e3e915b2babe"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="MBH Bank (Takarékbank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Nyugat Takarék Szövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="f594cbbb-a841-443b-92c1-72e8d87f6c8b"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="NYUGAT_TAKARÉK_SZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="48"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3f9fe78c-d567-42e3-90d9-6ef8383f96e2"/>
+            <column name="code_table_id" value="f594cbbb-a841-443b-92c1-72e8d87f6c8b"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Nyugat Takarék Szövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Oberbank -->
+        <insert tableName="code_table">
+            <column name="id" value="724c3b42-7dd9-4f19-a133-d5265e189c2e"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="OBERBANK"/>
+            <column name="sort_order" valueNumeric="49"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="a8ef4c87-2e9c-47cf-ae11-153d7a419a32"/>
+            <column name="code_table_id" value="724c3b42-7dd9-4f19-a133-d5265e189c2e"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Oberbank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: OTP Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="ee328237-d54a-457a-8a77-401228d520cd"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="OTP_BANK"/>
+            <column name="sort_order" valueNumeric="50"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="66c4a270-e939-4c31-9559-a58c1f98222d"/>
+            <column name="code_table_id" value="ee328237-d54a-457a-8a77-401228d520cd"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="OTP Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: OTP Lakástakarék -->
+        <insert tableName="code_table">
+            <column name="id" value="1385db74-ab6d-494e-a782-31ce708e5873"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="OTP_LAKÁSTAKARÉK"/>
+            <column name="sort_order" valueNumeric="51"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="11072982-6f12-40ef-b057-92a69a5756de"/>
+            <column name="code_table_id" value="1385db74-ab6d-494e-a782-31ce708e5873"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="OTP Lakástakarék"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Otthon Lakástakarékpénztár -->
+        <insert tableName="code_table">
+            <column name="id" value="e1f886d3-b3eb-4915-a1dd-4b7dc9df89ca"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="OTTHON_LAKÁSTAKARÉKPÉNZTÁR"/>
+            <column name="sort_order" valueNumeric="52"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="d9bb0fc1-bfb0-484f-9817-b474cc3216f7"/>
+            <column name="code_table_id" value="e1f886d3-b3eb-4915-a1dd-4b7dc9df89ca"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Otthon Lakástakarékpénztár"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Pannon Takarék Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="06b706bc-4ae6-4202-8638-e7a5668f8cc4"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="PANNON_TAKARÉK_BANK"/>
+            <column name="sort_order" valueNumeric="53"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="8d9f2d48-e648-4b24-a241-e81fe7fb96c0"/>
+            <column name="code_table_id" value="06b706bc-4ae6-4202-8638-e7a5668f8cc4"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Pannon Takarék Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Pannonhalma és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="b85ebb1e-27d7-40bb-ace7-4ebf8ce97330"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="PANNONHALMA_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="54"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="e3766615-bcc8-4cc1-a945-04fabf228aad"/>
+            <column name="code_table_id" value="b85ebb1e-27d7-40bb-ace7-4ebf8ce97330"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Pannonhalma és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Pátria Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="db30c436-3cbb-41be-9239-5591563ecde9"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="PÁTRIA_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="55"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="636f6074-dbf6-4cc4-b696-90bbe68cea13"/>
+            <column name="code_table_id" value="db30c436-3cbb-41be-9239-5591563ecde9"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Pátria Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Pillér Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="21e1dc9c-64b2-4fb3-b603-429bb07ed44d"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="PILLÉR_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="56"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="e4c6a263-9aae-41f1-a0c9-be9c506b22f0"/>
+            <column name="code_table_id" value="21e1dc9c-64b2-4fb3-b603-429bb07ed44d"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Pillér Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Polgári Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="eac016f1-97cb-43fe-9a3e-401d38997d98"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="POLGÁRI_BANK"/>
+            <column name="sort_order" valueNumeric="57"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="5e5cc9f2-3e7d-4111-abb8-364597fff0e2"/>
+            <column name="code_table_id" value="eac016f1-97cb-43fe-9a3e-401d38997d98"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Polgári Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Quaestor -->
+        <insert tableName="code_table">
+            <column name="id" value="1a439212-410e-4a37-b2b0-8af8d4795b75"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="QUAESTOR"/>
+            <column name="sort_order" valueNumeric="58"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="68994a95-f906-46bb-a296-ba295fa8d38d"/>
+            <column name="code_table_id" value="1a439212-410e-4a37-b2b0-8af8d4795b75"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Quaestor"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Raiffeisen Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="d35e7b61-03f7-45f3-8df0-f234388b5070"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="RAIFFEISEN_BANK"/>
+            <column name="sort_order" valueNumeric="59"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3bdb08a8-445b-462a-95c3-429d529114ca"/>
+            <column name="code_table_id" value="d35e7b61-03f7-45f3-8df0-f234388b5070"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Raiffeisen Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Rajka és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="6bbc823a-441a-4155-b7ae-43db326beb0c"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="RAJKA_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="60"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="0b2ac145-ca17-4f44-91ee-b8de921fdba7"/>
+            <column name="code_table_id" value="6bbc823a-441a-4155-b7ae-43db326beb0c"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Rajka és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Savaria Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="53629ead-5ad7-4edb-80bf-12e66c821ecb"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="SAVARIA_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="61"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="2d285496-de0d-46e1-a6c0-147e40acc9af"/>
+            <column name="code_table_id" value="53629ead-5ad7-4edb-80bf-12e66c821ecb"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Savaria Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Sberbank -->
+        <insert tableName="code_table">
+            <column name="id" value="edc240ff-f35f-45e1-8b1c-24492ee69f38"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="SBERBANK"/>
+            <column name="sort_order" valueNumeric="62"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="d80a3155-ec7a-4374-aaee-17323f8e9d2b"/>
+            <column name="code_table_id" value="edc240ff-f35f-45e1-8b1c-24492ee69f38"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Sberbank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Sopron Bank (GRAWE - Bank Burgenland) -->
+        <insert tableName="code_table">
+            <column name="id" value="e31b3a91-3173-484e-9098-f283e9dbd63b"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="SOPRON_BANK_GRAWE___BANK_BURGENLAND"/>
+            <column name="sort_order" valueNumeric="63"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="230d1132-d69c-43d5-8dc7-dd09714dc4c1"/>
+            <column name="code_table_id" value="e31b3a91-3173-484e-9098-f283e9dbd63b"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Sopron Bank (GRAWE - Bank Burgenland)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Szigetvári Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="a1ec27ba-3f4a-4bce-9909-805cd82f9ddd"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="SZIGETVÁRI_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="64"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="0714cd37-34ec-4cf3-a896-8f8f75c954c5"/>
+            <column name="code_table_id" value="a1ec27ba-3f4a-4bce-9909-805cd82f9ddd"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Szigetvári Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Tiszafüred és Vidéke Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="e24ae4f4-54fe-4c92-8be5-57e4399d6882"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="TISZAFÜRED_ÉS_VIDÉKE_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="65"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="0fdfa5b9-a465-446d-8ba7-0038a8e48c03"/>
+            <column name="code_table_id" value="e24ae4f4-54fe-4c92-8be5-57e4399d6882"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Tiszafüred és Vidéke Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Tiszántúli Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="93f2663e-64e5-4145-9d41-89d3fdcb8dd9"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="TISZÁNTÚLI_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="66"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="50039171-d098-406c-932c-33c9929608b4"/>
+            <column name="code_table_id" value="93f2663e-64e5-4145-9d41-89d3fdcb8dd9"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Tiszántúli Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: UCB (BNP Paribas Bank) -->
+        <insert tableName="code_table">
+            <column name="id" value="587d2c29-4668-4d3b-a255-a3cac9e1e05b"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="UCB_BNP_PARIBAS_BANK"/>
+            <column name="sort_order" valueNumeric="67"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="bb2533dc-1325-4f97-a1a8-c5ef7c823237"/>
+            <column name="code_table_id" value="587d2c29-4668-4d3b-a255-a3cac9e1e05b"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="UCB (BNP Paribas Bank)"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: UniCredit Bank -->
+        <insert tableName="code_table">
+            <column name="id" value="60febf79-bd7d-48e1-8736-c2bc0dc48f52"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="UNICREDIT_BANK"/>
+            <column name="sort_order" valueNumeric="68"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="6d57b0a1-0935-4d25-b7ef-770ee6f588a7"/>
+            <column name="code_table_id" value="60febf79-bd7d-48e1-8736-c2bc0dc48f52"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="UniCredit Bank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Volksbank -->
+        <insert tableName="code_table">
+            <column name="id" value="68876fc1-768e-460f-a87b-87dc437701e3"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="VOLKSBANK"/>
+            <column name="sort_order" valueNumeric="69"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="d2633dd8-6ad7-49b6-bab9-265a0280fd3f"/>
+            <column name="code_table_id" value="68876fc1-768e-460f-a87b-87dc437701e3"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Volksbank"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Bank: Zala Takarékszövetkezet -->
+        <insert tableName="code_table">
+            <column name="id" value="dc6830c4-70b4-48ea-ad25-7d198c857160"/>
+            <column name="type_id" value="d812f6b0-37be-4506-9d9e-eff90f9f8124"/>
+            <column name="code" value="ZALA_TAKARÉKSZÖVETKEZET"/>
+            <column name="sort_order" valueNumeric="70"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="c98a2d75-2373-4d9b-a5ce-8dd7794b63e3"/>
+            <column name="code_table_id" value="dc6830c4-70b4-48ea-ad25-7d198c857160"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Zala Takarékszövetkezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

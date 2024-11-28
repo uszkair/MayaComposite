@@ -13,4 +13,10 @@
     <include file="/db/changelog/changes/20241125_create_subdeposit_table.xml"/>
     <!-- Include code tables -->
     <include file="/db/changelog/changes/20241128_create_code_tables.xml"/>
+    <!-- Insert init expense_bearer -->
+    <include file="/db/changelog/changes/20241129_init_expense_bearer_types.xml"/>
+    <!-- Insert init language codes -->
+    <include file="/db/changelog/changes/20241129_init_language_codes.xml"/>
+    <include file="/db/changelog/changes/20241128_init_bank_codes.xml"/>
+
 </databaseChangeLog>

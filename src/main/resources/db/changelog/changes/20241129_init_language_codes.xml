@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20241129-1" author="claude">
+        <!-- Language type -->
+        <insert tableName="code_table_type">
+            <column name="id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="LANGUAGE"/>
+            <column name="default_language" value="hu"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Magyar -->
+        <insert tableName="code_table">
+            <column name="id" value="2a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="hu"/>
+            <column name="sort_order" valueNumeric="1"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="2a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="magyar"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Angol -->
+        <insert tableName="code_table">
+            <column name="id" value="4a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="en"/>
+            <column name="sort_order" valueNumeric="2"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="5a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="4a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="angol"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Német -->
+        <insert tableName="code_table">
+            <column name="id" value="6a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="de"/>
+            <column name="sort_order" valueNumeric="3"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="7a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="6a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="német"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Szlovák -->
+        <insert tableName="code_table">
+            <column name="id" value="8a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="sk"/>
+            <column name="sort_order" valueNumeric="4"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="9a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="8a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="szlovák"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Orosz -->
+        <insert tableName="code_table">
+            <column name="id" value="aa31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="ru"/>
+            <column name="sort_order" valueNumeric="5"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="ba31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="aa31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="orosz"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Francia -->
+        <insert tableName="code_table">
+            <column name="id" value="ca31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="fr"/>
+            <column name="sort_order" valueNumeric="6"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="da31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="ca31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="francia"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Román -->
+        <insert tableName="code_table">
+            <column name="id" value="ea31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="ro"/>
+            <column name="sort_order" valueNumeric="7"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="fa31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="ea31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="román"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Olasz -->
+        <insert tableName="code_table">
+            <column name="id" value="1b31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="it"/>
+            <column name="sort_order" valueNumeric="8"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="2b31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="1b31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="olasz"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Kínai -->
+        <insert tableName="code_table">
+            <column name="id" value="3b31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="zh"/>
+            <column name="sort_order" valueNumeric="9"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="4b31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="3b31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="kínai"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

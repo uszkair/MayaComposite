@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20241129-1" author="claude">
+        <!-- ExpenseBearer type -->
+        <insert tableName="code_table_type">
+            <column name="id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="EXPENSE_BEARER_TYPE"/>
+            <column name="default_language" value="hu"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Természetes személy -->
+        <insert tableName="code_table">
+            <column name="id" value="2e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="NATURAL_PERSON"/>
+            <column name="sort_order" valueNumeric="1"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="3e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="2e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="természetes személy"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Gazdálkodó szervezet -->
+        <insert tableName="code_table">
+            <column name="id" value="4e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="BUSINESS_ORGANIZATION"/>
+            <column name="sort_order" valueNumeric="2"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="5e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="4e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="gazdálkodó szervezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Önkormányzat -->
+        <insert tableName="code_table">
+            <column name="id" value="6e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="MUNICIPALITY"/>
+            <column name="sort_order" valueNumeric="3"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="7e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="6e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="önkormányzat"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Egyéb szervezet -->
+        <insert tableName="code_table">
+            <column name="id" value="8e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code" value="OTHER_ORGANIZATION"/>
+            <column name="sort_order" valueNumeric="4"/>
+            <column name="is_active" valueNumeric="1"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_translation">
+            <column name="id" value="9e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_id" value="8e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="egyéb szervezet"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
