@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "code_table_type")
 @Getter
@@ -20,12 +23,15 @@ public class CodeTableType extends Auditable {
     @Column(name = "code", nullable = false, unique = true)
     private String code;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "description")
-    private String description;
+    @Column(name = "default_language", nullable = false, length = 2)
+    private String defaultLanguage = "hu";
 
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
+
+    @OneToMany(mappedBy = "codeTableType", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CodeTableTypeTranslation> translations = new HashSet<>();
+
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+    private Set<CodeTable> codeTables = new HashSet<>();
 }

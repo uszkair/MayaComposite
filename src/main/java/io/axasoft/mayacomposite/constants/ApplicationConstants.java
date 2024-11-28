@@ -18,4 +18,9 @@ public class ApplicationConstants {
     // apartment
     public static final String APARTMENT_IDENTIFIER_EXISTS = "apartment.identifier.exists";
 
+    // code table constants
+    public static final String CODE_TABLE_CODE_EXISTS = "code.table.code.exists";
+    public static final String CODE_TABLE_TRANSLATION_EXISTS = "code.table.translation.exists";
+    public static final String CODE_TABLE_TYPE_EXISTS = "code.table.type.exists";
+    public static final String CODE_TABLE_TYPE_TRANSLATION_EXISTS = "code.table.type.translation.exists";
 }

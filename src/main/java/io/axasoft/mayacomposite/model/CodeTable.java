@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "code_table")
 @Getter
@@ -24,12 +27,6 @@ public class CodeTable extends Auditable {
     @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "sort_order")
     private Integer sortOrder;
 
@@ -38,4 +35,7 @@ public class CodeTable extends Auditable {
 
     @Version
     private Long version;
+
+    @OneToMany(mappedBy = "codeTable", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CodeTableTranslation> translations = new HashSet<>();
 }
