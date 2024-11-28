@@ -9,6 +9,8 @@
     <include file="/db/changelog/changes/20241107_create_user_table.xml"/>
     <!-- Include the changeset for the expense_bearer table -->
     <include file="/db/changelog/changes/20241107_create_expense_bearer_table.xml"/>
+    <!-- Include subdeposit table -->
     <include file="/db/changelog/changes/20241125_create_subdeposit_table.xml"/>
+    <!-- Include code tables -->
+    <include file="/db/changelog/changes/20241128_create_code_tables.xml"/>
 </databaseChangeLog>
-

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="20241128-1" author="claude">
+        <!-- Create code_table_type table -->
+        <createTable tableName="code_table_type">
+            <!-- Primary key -->
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <!-- Core fields -->
+            <column name="code" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="default_language" type="varchar(2)" defaultValue="hu">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Audit fields -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Create code_table_type_translation table -->
+        <createTable tableName="code_table_type_translation">
+            <!-- Primary key -->
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <!-- Foreign key to code_table_type -->
+            <column name="type_id" type="varchar(36)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_code_table_type_translation"
+                             references="code_table_type(id)"
+                             deleteCascade="true"/>
+            </column>
+
+            <!-- Translation fields -->
+            <column name="language" type="varchar(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(500)"/>
+
+            <!-- Audit fields -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Create code_table table -->
+        <createTable tableName="code_table">
+            <!-- Primary key -->
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <!-- Foreign key to code_table_type -->
+            <column name="type_id" type="varchar(36)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_code_table_type"
+                             references="code_table_type(id)"/>
+            </column>
+
+            <!-- Core fields -->
+            <column name="code" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sort_order" type="int"/>
+            <column name="is_active" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="bigint" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Audit fields -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Create code_table_translation table -->
+        <createTable tableName="code_table_translation">
+            <!-- Primary key -->
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <!-- Foreign key to code_table -->
+            <column name="code_table_id" type="varchar(36)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_code_table_translation"
+                             references="code_table(id)"
+                             deleteCascade="true"/>
+            </column>
+
+            <!-- Translation fields -->
+            <column name="language" type="varchar(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(500)"/>
+
+            <!-- Audit fields -->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Add unique constraints -->
+        <addUniqueConstraint
+                tableName="code_table"
+                columnNames="type_id, code"
+                constraintName="uk_code_table_type_code"/>
+
+        <addUniqueConstraint
+                tableName="code_table_type_translation"
+                columnNames="type_id, language"
+                constraintName="uk_code_table_type_translation"/>
+
+        <addUniqueConstraint
+                tableName="code_table_translation"
+                columnNames="code_table_id, language"
+                constraintName="uk_code_table_translation"/>
+
+        <!-- Create indexes -->
+        <createIndex indexName="idx_code_table_type_code" tableName="code_table_type">
+            <column name="code"/>
+        </createIndex>
+
+        <createIndex indexName="idx_code_table_type_translation" tableName="code_table_type_translation">
+            <column name="type_id"/>
+            <column name="language"/>
+        </createIndex>
+
+        <createIndex indexName="idx_code_table_type_id" tableName="code_table">
+            <column name="type_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_code_table_code" tableName="code_table">
+            <column name="code"/>
+        </createIndex>
+
+        <createIndex indexName="idx_code_table_translation" tableName="code_table_translation">
+            <column name="code_table_id"/>
+            <column name="language"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
