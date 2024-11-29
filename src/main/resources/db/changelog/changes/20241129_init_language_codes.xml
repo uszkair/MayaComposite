@@ -18,10 +18,31 @@
             <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
         </insert>
 
+        <insert tableName="code_table_type_translation">
+            <column name="id" value="123e4567-e89b-12d3-a456-426614174000"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Nyelv"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_type_translation">
+            <column name="id" value="123e4567-e89b-12d3-a456-426614174001"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="en"/>
+            <column name="name" value="Language"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
         <!-- Magyar -->
         <insert tableName="code_table">
             <column name="id" value="2a31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="hu"/>
             <column name="sort_order" valueNumeric="1"/>
             <column name="is_active" valueNumeric="1"/>
@@ -44,7 +65,7 @@
         <!-- Angol -->
         <insert tableName="code_table">
             <column name="id" value="4a31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="en"/>
             <column name="sort_order" valueNumeric="2"/>
             <column name="is_active" valueNumeric="1"/>
@@ -67,7 +88,7 @@
         <!-- Német -->
         <insert tableName="code_table">
             <column name="id" value="6a31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="de"/>
             <column name="sort_order" valueNumeric="3"/>
             <column name="is_active" valueNumeric="1"/>
@@ -90,7 +111,7 @@
         <!-- Szlovák -->
         <insert tableName="code_table">
             <column name="id" value="8a31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="sk"/>
             <column name="sort_order" valueNumeric="4"/>
             <column name="is_active" valueNumeric="1"/>
@@ -113,7 +134,7 @@
         <!-- Orosz -->
         <insert tableName="code_table">
             <column name="id" value="aa31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="ru"/>
             <column name="sort_order" valueNumeric="5"/>
             <column name="is_active" valueNumeric="1"/>
@@ -136,7 +157,7 @@
         <!-- Francia -->
         <insert tableName="code_table">
             <column name="id" value="ca31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="fr"/>
             <column name="sort_order" valueNumeric="6"/>
             <column name="is_active" valueNumeric="1"/>
@@ -159,7 +180,7 @@
         <!-- Román -->
         <insert tableName="code_table">
             <column name="id" value="ea31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="ro"/>
             <column name="sort_order" valueNumeric="7"/>
             <column name="is_active" valueNumeric="1"/>
@@ -182,7 +203,7 @@
         <!-- Olasz -->
         <insert tableName="code_table">
             <column name="id" value="1b31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="it"/>
             <column name="sort_order" valueNumeric="8"/>
             <column name="is_active" valueNumeric="1"/>
@@ -205,7 +226,7 @@
         <!-- Kínai -->
         <insert tableName="code_table">
             <column name="id" value="3b31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1a31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="zh"/>
             <column name="sort_order" valueNumeric="9"/>
             <column name="is_active" valueNumeric="1"/>

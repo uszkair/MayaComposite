@@ -18,10 +18,32 @@
             <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
         </insert>
 
+        <!-- EXPENSE_BEARER_TYPE type translations -->
+        <insert tableName="code_table_type_translation">
+            <column name="id" value="234e4567-e89b-12d3-a456-426614174002"/>
+            <column name="code_table_type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="hu"/>
+            <column name="name" value="Költségviselő típus"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="code_table_type_translation">
+            <column name="id" value="234e4567-e89b-12d3-a456-426614174003"/>
+            <column name="code_table_type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="language" value="en"/>
+            <column name="name" value="Expense Bearer Type"/>
+            <column name="created_by" value="system"/>
+            <column name="created_date" valueDate="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_by" value="system"/>
+            <column name="last_modified_date" valueDate="CURRENT_TIMESTAMP"/>
+        </insert>
+
         <!-- Természetes személy -->
         <insert tableName="code_table">
             <column name="id" value="2e31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="NATURAL_PERSON"/>
             <column name="sort_order" valueNumeric="1"/>
             <column name="is_active" valueNumeric="1"/>
@@ -44,7 +66,7 @@
         <!-- Gazdálkodó szervezet -->
         <insert tableName="code_table">
             <column name="id" value="4e31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="BUSINESS_ORGANIZATION"/>
             <column name="sort_order" valueNumeric="2"/>
             <column name="is_active" valueNumeric="1"/>
@@ -67,7 +89,7 @@
         <!-- Önkormányzat -->
         <insert tableName="code_table">
             <column name="id" value="6e31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="MUNICIPALITY"/>
             <column name="sort_order" valueNumeric="3"/>
             <column name="is_active" valueNumeric="1"/>
@@ -90,7 +112,7 @@
         <!-- Egyéb szervezet -->
         <insert tableName="code_table">
             <column name="id" value="8e31f193-1234-4b56-9d82-123456789abc"/>
-            <column name="type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
+            <column name="code_table_type_id" value="1e31f193-1234-4b56-9d82-123456789abc"/>
             <column name="code" value="OTHER_ORGANIZATION"/>
             <column name="sort_order" valueNumeric="4"/>
             <column name="is_active" valueNumeric="1"/>

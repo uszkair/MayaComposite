@@ -21,7 +21,7 @@ public class CodeTable extends Auditable {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id", nullable = false)
+    @JoinColumn(name = "code_table_type_id", nullable = false)
     private CodeTableType type;
 
     @Column(name = "code", nullable = false)

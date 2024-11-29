@@ -47,7 +47,7 @@
             </column>
 
             <!-- Foreign key to code_table_type -->
-            <column name="type_id" type="varchar(36)">
+            <column name="code_table_type_id" type="varchar(36)">
                 <constraints nullable="false"
                              foreignKeyName="fk_code_table_type_translation"
                              references="code_table_type(id)"
@@ -86,7 +86,7 @@
             </column>
 
             <!-- Foreign key to code_table_type -->
-            <column name="type_id" type="varchar(36)">
+            <column name="code_table_type_id" type="varchar(36)">
                 <constraints nullable="false"
                              foreignKeyName="fk_code_table_type"
                              references="code_table_type(id)"/>
@@ -161,12 +161,12 @@
         <!-- Add unique constraints -->
         <addUniqueConstraint
                 tableName="code_table"
-                columnNames="type_id, code"
+                columnNames="code_table_type_id, code"
                 constraintName="uk_code_table_type_code"/>
 
         <addUniqueConstraint
                 tableName="code_table_type_translation"
-                columnNames="type_id, language"
+                columnNames="code_table_type_id, language"
                 constraintName="uk_code_table_type_translation"/>
 
         <addUniqueConstraint
@@ -180,12 +180,12 @@
         </createIndex>
 
         <createIndex indexName="idx_code_table_type_translation" tableName="code_table_type_translation">
-            <column name="type_id"/>
+            <column name="code_table_type_id"/>
             <column name="language"/>
         </createIndex>
 
-        <createIndex indexName="idx_code_table_type_id" tableName="code_table">
-            <column name="type_id"/>
+        <createIndex indexName="idx_code_table_code_table_type_id" tableName="code_table">
+            <column name="code_table_type_id"/>
         </createIndex>
 
         <createIndex indexName="idx_code_table_code" tableName="code_table">

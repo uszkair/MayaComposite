@@ -18,7 +18,7 @@ public class CodeTableTypeTranslation extends Auditable {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id", nullable = false)
+    @JoinColumn(name = "code_table_type_id", nullable = false)
     private CodeTableType codeTableType;
 
     @Column(name = "language", nullable = false, length = 2)
