@@ -3,27 +3,31 @@ package io.axasoft.mayacomposite.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * A költségviselő részleges módosítására szolgáló request osztály.
+ * Minden mező opcionális, csak a módosítandó mezőket kell megadni.
+ */
 @Data
 public class ExpenseBearerPatchRequest {
-    @Schema(description = "Költségviselő típusa", example = "Individual")
-    @NotBlank(message = "{expenseBearer.error.bearerType.notblank}")
+
+    // Alap adatok
+    @Schema(description = "A költségviselő típusa", example = "természetes személy")
     private String bearerType;
 
-    @Schema(description = "Név", example = "John Doe")
-    @NotBlank(message = "{expenseBearer.error.name.notblank}")
+    @Schema(description = "A költségviselő neve", example = "Kiss János")
     private String name;
 
-    @Schema(description = "Születési név", example = "John Smith")
+    // Természetes személy adatok
+    @Schema(description = "Születési név", example = "Kiss János Péter")
     private String birthName;
 
-    @Schema(description = "Anyja neve", example = "Jane Smith")
+    @Schema(description = "Anyja neve", example = "Nagy Mária")
     private String motherName;
 
     @Schema(description = "Születési év", example = "1980")
@@ -35,66 +39,94 @@ public class ExpenseBearerPatchRequest {
     @Schema(description = "Születési hely", example = "Budapest")
     private String birthPlace;
 
-    @Schema(description = "Adóazonosító jel", example = "123456789")
-    @Size(max = 50, message = "{expenseBearer.error.taxId.size}")
+    @Schema(description = "Adóazonosító jel", example = "8123456789")
+    @Pattern(regexp = "^[0-9]{10}$", message = "{expenseBearer.error.taxId.pattern}")
     private String taxId;
 
-    @Schema(description = "Személyi szám", example = "12345678")
-    @Size(max = 50, message = "{expenseBearer.error.personalId.size}")
+    @Schema(description = "Személyi szám", example = "123456AB")
     private String personalId;
 
-    @Schema(description = "Személyi igazolvány szám", example = "ID123456")
-    @Size(max = 50, message = "{expenseBearer.error.idCardNumber.size}")
+    @Schema(description = "Személyi igazolvány szám", example = "123456AB")
     private String idCardNumber;
 
+    // Gazdálkodó szervezet adatok
+    @Schema(description = "Cégjegyzékszám", example = "01-09-123456")
+    @Pattern(regexp = "^\\d{2}-\\d{2}-\\d{6}$", message = "{expenseBearer.error.companyRegistrationNumber.pattern}")
+    private String companyRegistrationNumber;
+
+    @Schema(description = "Székhely címe", example = "1234 Budapest, Példa utca 1.")
+    private String headquartersAddress;
+
+    @Schema(description = "Képviselő neve", example = "Nagy János")
+    private String representativeName;
+
+    @Schema(description = "Képviselő születési neve", example = "Nagy János Péter")
+    private String representativeBirthName;
+
+    @Schema(description = "Képviselő anyja neve", example = "Kiss Mária")
+    private String representativeMotherName;
+
+    @Schema(description = "Képviselő adószáma", example = "8123456789")
+    private String representativeTaxNumber;
+
+    @Schema(description = "Képviselő születési ideje", example = "1980-01-01")
+    private LocalDate representativeBirthDate;
+
+    @Schema(description = "Képviselő lakcíme", example = "1234 Budapest, Példa utca 2.")
+    private String representativeAddress;
+
+    // Értesítési beállítások
     @Schema(description = "Értesítések nyelve", example = "hu")
     private String notificationLanguage;
 
     @Schema(description = "IBAN használata", example = "false")
-    private Boolean useIban = false;
+    private Boolean useIban;
 
-    @Schema(description = "E-mail értesítések", example = "true")
-    private Boolean emailNotifications = true;
+    @Schema(description = "E-mail értesítések engedélyezése", example = "true")
+    private Boolean emailNotifications;
 
-    @Schema(description = "Nyomtatott értesítések", example = "true")
-    private Boolean printNotifications = true;
+    @Schema(description = "Nyomtatott értesítések engedélyezése", example = "true")
+    private Boolean printNotifications;
 
-    @Schema(description = "Csoportos beszedési azonosító", example = "DD123456")
+    // Banki adatok
+    @Schema(description = "Csoportos beszedési megbízás azonosító", example = "A12345")
     private String directDebitId;
 
     @Schema(description = "Bank neve", example = "OTP Bank")
     private String bankName;
 
-    @Schema(description = "Bankszámlaszám", example = "1234567890123456")
+    @Schema(description = "Bankszámlaszám", example = "11111111-22222222-33333333")
+    @Pattern(regexp = "^\\d{8}-\\d{8}-\\d{8}$", message = "{expenseBearer.error.bankAccountNumber.pattern}")
     private String bankAccountNumber;
 
-    @Schema(description = "Számlatulajdonos neve", example = "John Doe")
+    @Schema(description = "Számlatulajdonos neve", example = "Kiss János")
     private String accountHolderName;
 
-    @Schema(description = "Alapértelmezett fizetési mód", example = "Bank Transfer")
+    @Schema(description = "Alapértelmezett fizetési mód", example = "bank_transfer")
     private String defaultPaymentMethod;
 
-    @Schema(description = "Csoportos beszedési limit", example = "1000.00")
-    @DecimalMin(value = "0.0", inclusive = true, message = "{expenseBearer.error.directDebitLimit.min}")
-    private BigDecimal directDebitLimit = BigDecimal.ZERO;
+    @Schema(description = "Csoportos beszedés limit", example = "100000.00")
+    @DecimalMin(value = "0.0", message = "{expenseBearer.error.directDebitLimit.min}")
+    private BigDecimal directDebitLimit;
 
-    @Schema(description = "Hozzáférési e-mail", example = "john.doe@example.com")
+    // Rendszer adatok
+    @Schema(description = "Hozzáférési e-mail cím", example = "pelda@email.hu")
     @Email(message = "{expenseBearer.error.accessEmail.email}")
     private String accessEmail;
 
-    @Schema(description = "Státusz", example = "Active")
+    @Schema(description = "Státusz", example = "active")
     private String status;
 
-    @Schema(description = "Típus", example = "Residential")
+    @Schema(description = "Típus", example = "owner")
     private String type;
 
-    @Schema(description = "Azonosító", example = "EB12345")
+    @Schema(description = "Azonosító", example = "KV-123")
     private String identifier;
 
-    @Schema(description = "Kezdő dátum", example = "2023-01-01")
+    @Schema(description = "Érvényesség kezdete", example = "2024-01-01")
     private LocalDate startDate;
 
-    @Schema(description = "Vége dátum", example = "2023-12-31")
+    @Schema(description = "Érvényesség vége", example = "2024-12-31")
     private LocalDate endDate;
 
 }
