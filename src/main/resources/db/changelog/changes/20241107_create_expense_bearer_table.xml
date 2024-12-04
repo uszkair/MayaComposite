@@ -5,21 +5,28 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <!-- Changeset for creating the expense_bearer table -->
-    <changeSet id="20241119-1" author="RobertUszkai">
+    <changeSet id="20241129-1" author="RobertUszkai">
+        <!-- Create expense_bearer table -->
         <createTable tableName="expense_bearer">
+            <!-- Primary key -->
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+
+            <!-- Relationship -->
             <column name="apartment_id" type="varchar(36)">
                 <constraints nullable="false"/>
             </column>
+
+            <!-- Basic fields -->
             <column name="bearer_type" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
+
+            <!-- Natural person fields -->
             <column name="birth_name" type="varchar(255)"/>
             <column name="mother_name" type="varchar(255)"/>
             <column name="birth_year" type="integer"/>
@@ -28,6 +35,18 @@
             <column name="tax_id" type="varchar(50)"/>
             <column name="personal_id" type="varchar(50)"/>
             <column name="id_card_number" type="varchar(50)"/>
+
+            <!-- Organization fields -->
+            <column name="company_registration_number" type="varchar(50)"/>
+            <column name="headquarters_address" type="varchar(500)"/>
+            <column name="representative_name" type="varchar(255)"/>
+            <column name="representative_birth_name" type="varchar(255)"/>
+            <column name="representative_mother_name" type="varchar(255)"/>
+            <column name="representative_tax_number" type="varchar(50)"/>
+            <column name="representative_birth_date" type="date"/>
+            <column name="representative_address" type="varchar(500)"/>
+
+            <!-- Notification settings -->
             <column name="notification_language" type="varchar(50)"/>
             <column name="use_iban" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false"/>
@@ -38,6 +57,8 @@
             <column name="print_notifications" type="boolean" defaultValueBoolean="true">
                 <constraints nullable="false"/>
             </column>
+
+            <!-- Bank details -->
             <column name="direct_debit_id" type="varchar(50)"/>
             <column name="bank_name" type="varchar(255)"/>
             <column name="bank_account_number" type="varchar(50)"/>
@@ -46,13 +67,16 @@
             <column name="direct_debit_limit" type="decimal(10,2)" defaultValue="0.00">
                 <constraints nullable="false"/>
             </column>
+
+            <!-- System fields -->
             <column name="access_email" type="varchar(255)"/>
             <column name="status" type="varchar(100)"/>
             <column name="type" type="varchar(100)"/>
             <column name="identifier" type="varchar(50)"/>
             <column name="start_date" type="date"/>
             <column name="end_date" type="date"/>
-            <!-- Audit columns -->
+
+            <!-- Audit fields -->
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -66,29 +90,47 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <!-- Add foreign key for apartment_id -->
+
+        <!-- Foreign key for apartment relationship -->
         <addForeignKeyConstraint
                 baseTableName="expense_bearer"
                 baseColumnNames="apartment_id"
                 referencedTableName="apartment"
                 referencedColumnNames="id"
                 constraintName="fk_expense_bearer_apartment"/>
+
+        <!-- Create indexes -->
+        <createIndex indexName="idx_expense_bearer_apartment" tableName="expense_bearer">
+            <column name="apartment_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_expense_bearer_identifier" tableName="expense_bearer">
+            <column name="identifier"/>
+        </createIndex>
+
+        <createIndex indexName="idx_expense_bearer_tax_id" tableName="expense_bearer">
+            <column name="tax_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_expense_bearer_status_type" tableName="expense_bearer">
+            <column name="status"/>
+            <column name="type"/>
+        </createIndex>
     </changeSet>
 
-    <!-- Changeset for creating the expense_bearer_phone_number table -->
-    <changeSet id="20241119-2" author="RobertUszkai">
+    <!-- Phone numbers table -->
+    <changeSet id="20241129-2" author="RobertUszkai">
         <createTable tableName="expense_bearer_phone_number">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="expense_bearer_id" type="varchar(36)">
-                <constraints nullable="false" foreignKeyName="fk_phone_expense_bearer"
-                             references="expense_bearer(id)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="phone_number" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <!-- Audit columns -->
+            <!-- Audit fields -->
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -102,22 +144,32 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="expense_bearer_phone_number"
+                baseColumnNames="expense_bearer_id"
+                referencedTableName="expense_bearer"
+                referencedColumnNames="id"
+                constraintName="fk_expense_bearer_phone"/>
+
+        <createIndex indexName="idx_expense_bearer_phone" tableName="expense_bearer_phone_number">
+            <column name="expense_bearer_id"/>
+        </createIndex>
     </changeSet>
 
-    <!-- Changeset for creating the expense_bearer_email_address table -->
-    <changeSet id="20241119-3" author="RobertUszkai">
+    <!-- Email addresses table -->
+    <changeSet id="20241129-3" author="RobertUszkai">
         <createTable tableName="expense_bearer_email_address">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="expense_bearer_id" type="varchar(36)">
-                <constraints nullable="false" foreignKeyName="fk_email_expense_bearer"
-                             references="expense_bearer(id)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="email_address" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <!-- Audit columns -->
+            <!-- Audit fields -->
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -131,17 +183,27 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="expense_bearer_email_address"
+                baseColumnNames="expense_bearer_id"
+                referencedTableName="expense_bearer"
+                referencedColumnNames="id"
+                constraintName="fk_expense_bearer_email"/>
+
+        <createIndex indexName="idx_expense_bearer_email" tableName="expense_bearer_email_address">
+            <column name="expense_bearer_id"/>
+        </createIndex>
     </changeSet>
 
-    <!-- Changeset for creating the expense_bearer_address table -->
-    <changeSet id="20241119-4" author="RobertUszkai">
+    <!-- Addresses table -->
+    <changeSet id="20241129-4" author="RobertUszkai">
         <createTable tableName="expense_bearer_address">
             <column name="id" type="varchar(36)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="expense_bearer_id" type="varchar(36)">
-                <constraints nullable="false" foreignKeyName="fk_address_expense_bearer"
-                             references="expense_bearer(id)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="address_line" type="varchar(500)">
                 <constraints nullable="false"/>
@@ -152,7 +214,7 @@
             <column name="default_address" type="boolean" defaultValueBoolean="false">
                 <constraints nullable="false"/>
             </column>
-            <!-- Audit columns -->
+            <!-- Audit fields -->
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -166,5 +228,17 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="expense_bearer_address"
+                baseColumnNames="expense_bearer_id"
+                referencedTableName="expense_bearer"
+                referencedColumnNames="id"
+                constraintName="fk_expense_bearer_address"/>
+
+        <createIndex indexName="idx_expense_bearer_address" tableName="expense_bearer_address">
+            <column name="expense_bearer_id"/>
+        </createIndex>
     </changeSet>
+
 </databaseChangeLog>

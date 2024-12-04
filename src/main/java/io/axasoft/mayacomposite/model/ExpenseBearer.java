@@ -8,7 +8,10 @@ import org.hibernate.annotations.GenericGenerator;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-
+/**
+ * A költségviselő entitás reprezentálja a társasházi költségek fizetéséért felelős személyt vagy szervezetet.
+ * Lehet tulajdonos, bérlő vagy egyéb költségviselő szervezet.
+ */
 @Entity
 @Table(name = "expense_bearer")
 @Getter
@@ -51,6 +54,30 @@ public class ExpenseBearer extends Auditable {
 
     @Column(name = "id_card_number")
     private String idCardNumber;
+
+    @Column(name = "company_registration_number")
+    private String companyRegistrationNumber;
+
+    @Column(name = "headquarters_address", length = 500)
+    private String headquartersAddress;
+
+    @Column(name = "representative_name")
+    private String representativeName;
+
+    @Column(name = "representative_birth_name")
+    private String representativeBirthName;
+
+    @Column(name = "representative_mother_name")
+    private String representativeMotherName;
+
+    @Column(name = "representative_tax_number")
+    private String representativeTaxNumber;
+
+    @Column(name = "representative_birth_date")
+    private LocalDate representativeBirthDate;
+
+    @Column(name = "representative_address", length = 500)
+    private String representativeAddress;
 
     @Column(name = "notification_language")
     private String notificationLanguage;
