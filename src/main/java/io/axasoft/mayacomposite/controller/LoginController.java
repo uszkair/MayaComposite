@@ -1,9 +1,10 @@
 package io.axasoft.mayacomposite.controller;
 
 import io.axasoft.mayacomposite.config.security.JwtTokenUtil;
-
 import io.axasoft.mayacomposite.request.LoginRequest;
 import io.axasoft.mayacomposite.request.RegisterRequest;
+import io.axasoft.mayacomposite.response.ApiResponse;
+import io.axasoft.mayacomposite.response.JwtTokenResponse;
 import io.axasoft.mayacomposite.service.CustomUserDetailsService;
 import io.axasoft.mayacomposite.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -33,9 +37,8 @@ public class LoginController {
         this.userDetailsService = userDetailsService;
         this.userService = userService;
     }
-
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<ApiResponse<JwtTokenResponse>> login(@RequestBody LoginRequest loginRequest) {
         try {
             // Authenticate the user using Spring Security's AuthenticationManager
             Authentication authentication = authenticationManager.authenticate(
@@ -45,13 +48,21 @@ public class LoginController {
             // If authentication is successful, generate a JWT token
             User user = (User) authentication.getPrincipal();
             String token = jwtTokenUtil.generateToken(user.getUsername());
-            return ResponseEntity.ok(token);
+
+            // Wrap the JWT token in the response object
+            JwtTokenResponse jwtToken = new JwtTokenResponse();
+            jwtToken.setToken(token);
+
+            ApiResponse<JwtTokenResponse> successResponse = new ApiResponse<>("Login successful", jwtToken);
+            return ResponseEntity.ok(successResponse);
 
         } catch (AuthenticationException e) {
-            // If authentication fails, return an unauthorized response
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password.");
+            // If authentication fails, return a structured error response
+            ApiResponse<JwtTokenResponse> errorResponse = new ApiResponse<>("Invalid email or password", null);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
         }
     }
+
 
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
